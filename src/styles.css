@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Noto+Sans+KR:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "./original.css";
+
+:root {
+  font-family: "DM Sans", "Noto Sans KR", sans-serif;
+}
+
+body {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.nav-button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding-inline: 0;
+}
+
+.mobile-nav-button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.about-copy p,
+.what-heading p,
+.mode-row > p,
+.work-intro p,
+.work-title-wrap p,
+.journey-list p,
+.skill-group p,
+.interest-list > p,
+.contact-bottom > p,
+.detail-lead,
+.detail-section p {
+  font-family: "Noto Sans KR", "DM Sans", sans-serif;
+}
+
+.placeholder-link {
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #111;
+  justify-content: space-between;
+  padding: 10px 0;
+  font: 700 12px Space Grotesk;
+  display: flex;
+  color: #777;
+}
+
+.placeholder-badge {
+  display: inline-block;
+  margin-top: 16px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font: 700 10px Space Grotesk;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 560px) {
+  body {
+    word-break: keep-all;
+  }
+
+  .about-copy p,
+  .mode-row > p,
+  .work-title-wrap p,
+  .journey-list p,
+  .detail-section p {
+    line-height: 1.55;
+  }
+}
