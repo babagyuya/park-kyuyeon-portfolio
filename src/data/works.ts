@@ -5,6 +5,7 @@ import beautyContent from "../assets/instagram-magazine/beauty-content.png";
 import instagramFeedOverview from "../assets/instagram-magazine/instagram-feed-overview.png";
 import instagramReelsPerformance from "../assets/instagram-magazine/instagram-reels-performance.png";
 import swithLanding from "../assets/projects/swith/swith-landing.png";
+import fitmeLanding from "../assets/projects/fitme/fitme-landing.png";
 import { callmebabyCase } from "./callmebaby";
 
 export type ProjectImage = {
@@ -178,7 +179,7 @@ export const works: Work[] = [
     category: "AI / DATA",
     period: "2026",
     role: "Frontend · Backend · Full Stack · Final Presentation",
-    team: "TEAM PROJECT",
+    team: "2 PEOPLE",
     highlight: "AI SERVICE",
     summary: "사용자의 골격과 취향을 기반으로 스타일을 추천하는 AI 패션 서비스",
     overview: ["개인의 골격과 취향 차이를 반영한 스타일 추천 경험을 만들었습니다.", "AI의 결과를 그대로 보여주는 대신 사용자가 추천 이유를 이해하고 선택할 수 있는 전체 흐름을 설계했습니다."],
@@ -198,7 +199,11 @@ export const works: Work[] = [
     results: [{ value: "AI", label: "END-TO-END SERVICE" }],
     skills: ["Python", "AI", "Frontend", "Backend", "Full Stack", "Final Presentation"],
     accent: "#C7B9FF",
-    heroImage: image("FITME 대표 서비스 화면", "HERO VISUAL"),
+    heroImage: {
+      src: fitmeLanding,
+      alt: "나에게 맞는 핏을 찾다라는 문구가 있는 FitMe 대표 서비스 화면",
+      caption: "HERO VISUAL",
+    },
     gallery: [
       { type: "full", title: "SERVICE FLOW", images: [image("FITME 서비스 흐름")] },
       { type: "three-column", title: "KEY SCREENS", images: [image("FITME 화면 1"), image("FITME 화면 2"), image("FITME 화면 3")] },

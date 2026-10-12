@@ -20,6 +20,7 @@ import { callmebabyCase } from "./data/callmebaby";
 import { certifications } from "./data/certifications";
 import { contact, contactLinks } from "./data/contact";
 import { experiences } from "./data/experiences";
+import { fitmeCase } from "./data/fitme";
 import { skillGroups } from "./data/skills";
 import { swithCase } from "./data/swith";
 import { works, type GalleryBlock, type ProjectImage, type Work } from "./data/works";
@@ -1409,6 +1410,126 @@ function SwithDetail({ project, index, next }: { project: Work; index: number; n
   );
 }
 
+function FitmeMedia({ image, size, onOpen }: { image: ProjectImage; size: "large" | "medium" | "small"; onOpen: (image: ProjectImage) => void }) {
+  return (
+    <figure className={`fitme-media fitme-media-${size}`}>
+      <button type="button" onClick={() => onOpen(image)} aria-label={`${image.alt} 크게 보기`}>
+        <img src={assetUrl(image.src)} alt={image.alt} />
+        <span>VIEW +</span>
+      </button>
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
+  );
+}
+
+function FitmeDetail({ project, index, next }: { project: Work; index: number; next: Work }) {
+  const [zoomImage, setZoomImage] = useState<ProjectImage | null>(null);
+  const { images } = fitmeCase;
+  const accent = { "--work-accent": project.accent } as CSSProperties;
+
+  return (
+    <main className="work-detail fitme-case project-fitme" style={accent}>
+      <header className="detail-nav fitme-nav">
+        <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
+        <Link to="/">CLOSE ×</Link>
+      </header>
+
+      <section className="fitme-hero">
+        <div className="fitme-hero-copy">
+          <span className="fitme-kicker">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+          <h1>FIT<em>ME</em></h1>
+          <h2>{fitmeCase.basicInfo.tagline}</h2>
+          <p>{fitmeCase.basicInfo.description}</p>
+          <div className="fitme-meta"><span>{fitmeCase.basicInfo.period}</span><span>{fitmeCase.basicInfo.team}</span><span>{fitmeCase.basicInfo.role}</span></div>
+        </div>
+        <FitmeMedia image={images.landing} size="large" onOpen={setZoomImage} />
+      </section>
+
+      <section className="fitme-section fitme-overview" aria-labelledby="fitme-overview-title">
+        <div className="fitme-heading">
+          <span>01 / PROJECT OVERVIEW</span>
+          <h2 id="fitme-overview-title">온라인에서는 직접 입어보기 전에<br /><em>내게 어울릴지 판단해야 합니다.</em></h2>
+        </div>
+        <div className="fitme-copy">{fitmeCase.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+      </section>
+
+      <section className="fitme-problem" aria-labelledby="fitme-problem-title">
+        <div className="fitme-heading inverse"><span>02 / THE PROBLEM</span><h2 id="fitme-problem-title">THREE QUESTIONS.<br /><em>ONE FLOW.</em></h2></div>
+        <div className="fitme-problem-grid">
+          {fitmeCase.problems.map((problem) => <article key={problem.id}><span>{problem.id} / {problem.key}</span><h3>{problem.question}</h3><b>{problem.answer} →</b></article>)}
+        </div>
+      </section>
+
+      <section className="fitme-section fitme-role" aria-labelledby="fitme-role-title">
+        <div className="fitme-heading"><span>03 / MY ROLE</span><h2 id="fitme-role-title">MY <em>CONTRIBUTION.</em></h2><p>아래 항목은 박규연이 직접 담당하고 기여한 영역입니다.</p></div>
+        <div className="fitme-role-list">{fitmeCase.roles.map((role) => <article key={role.id}><span>{role.id}</span><h3>{role.title}</h3><p>{role.description}</p></article>)}</div>
+      </section>
+
+      <section className="fitme-journey" aria-labelledby="fitme-journey-title">
+        <div className="fitme-journey-heading"><span>04 / DIAGNOSIS JOURNEY</span><h2 id="fitme-journey-title">DESKTOP TO <em>MOBILE.</em></h2><p>전신 이미지를 PC에서 바로 업로드하거나 QR을 통해 휴대폰으로 촬영한 이미지를 진단 Flow에 연결할 수 있도록 구성했습니다.</p></div>
+        <ol className="fitme-flow">{fitmeCase.diagnosisFlow.map((step, flowIndex) => <li key={step}><span>{String(flowIndex + 1).padStart(2, "0")}</span><b>{step}</b></li>)}</ol>
+        <div className="fitme-diagnosis-media"><FitmeMedia image={images.photoUpload} size="large" onOpen={setZoomImage} /><FitmeMedia image={images.qrMobileUpload} size="small" onOpen={setZoomImage} /></div>
+      </section>
+
+      <section className="fitme-analysis" aria-labelledby="fitme-analysis-title">
+        <div className="fitme-analysis-copy"><span>05 / AI ANALYSIS</span><h2 id="fitme-analysis-title">사진만 보지 않고<br /><em>설문과 함께 판단했습니다.</em></h2><p>사용자가 입력한 기본 정보와 전신 이미지 분석 결과를 활용하고, 이미지만으로 판단하기 어려운 체형 특징은 설문 응답으로 보완했습니다.</p><div className="fitme-analysis-formula"><b>BODY INFO</b><i>+</i><b>IMAGE ANALYSIS</b><i>+</i><b>SURVEY</b><i>→</i><strong>BODY TYPE</strong></div></div>
+        <FitmeMedia image={images.aiAnalysis} size="medium" onOpen={setZoomImage} />
+      </section>
+
+      <section className="fitme-result" aria-labelledby="fitme-result-title">
+        <div className="fitme-heading"><span>06 / RESULT</span><h2 id="fitme-result-title">YOUR FITME <em>RESULT.</em></h2><p>진단이 끝나면 최종 골격 유형, 체형 특징, 스타일 키워드와 분석 결과를 한 화면에서 보여줍니다.</p></div>
+        <FitmeMedia image={images.result} size="large" onOpen={setZoomImage} />
+        <div className="fitme-body-types">{fitmeCase.bodyTypes.map((type) => <article key={type.title}><h3>{type.title}</h3><p>{type.description}</p></article>)}</div>
+      </section>
+
+      <section className="fitme-style" aria-labelledby="fitme-style-title">
+        <div className="fitme-heading"><span>07 / RESULT & STYLE GUIDE</span><h2 id="fitme-style-title">FROM RESULT <em>TO STYLE.</em></h2><p>유형 이름으로 끝내지 않고 실제 옷을 고를 때 활용할 수 있도록 어울리는 스타일, 피하면 좋은 스타일과 구체적인 착장 기준으로 풀어냈습니다.</p></div>
+        <div className="fitme-style-media"><FitmeMedia image={images.styleGuide} size="medium" onOpen={setZoomImage} /><FitmeMedia image={images.fitDetails} size="medium" onOpen={setZoomImage} /></div>
+      </section>
+
+      <section className="fitme-recommend" aria-labelledby="fitme-recommend-title">
+        <div className="fitme-heading inverse"><span>08 / PRODUCT RECOMMENDATION</span><h2 id="fitme-recommend-title">진단 결과를<br /><em>실제 상품 선택까지 연결했습니다.</em></h2><p>머신러닝 Ranking 모델이 아니라 골격 유형을 중심으로 상품 태그와 사용자 필터를 조합하는 규칙 기반 추천 구조입니다.</p></div>
+        <div className="fitme-inputs">{fitmeCase.recommendation.inputs.map((input) => <span key={input}>{input}</span>)}</div>
+        <FitmeMedia image={images.productRecommendation} size="large" onOpen={setZoomImage} />
+        <div className="fitme-principles">{fitmeCase.recommendation.principles.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+      </section>
+
+      <section className="fitme-section fitme-community" aria-labelledby="fitme-community-title">
+        <div className="fitme-heading"><span>09 / COMMUNITY & RETENTION</span><h2 id="fitme-community-title">BEYOND <em>THE RESULT.</em></h2></div>
+        <article className="fitme-community-row"><FitmeMedia image={images.community} size="medium" onOpen={setZoomImage} /><div><h3>진단에서 끝나지 않고<br />경험을 공유하도록.</h3><p>사용자는 자신의 골격 유형과 스타일링 경험을 후기 Community에 공유할 수 있습니다.</p><div className="fitme-feature-chips">{fitmeCase.communityFeatures.map((feature) => <span key={feature}>{feature}</span>)}</div></div></article>
+        <article className="fitme-community-row reverse"><div><h3>다시 돌아왔을 때도<br />내 경험이 이어지도록.</h3><p>마이페이지에서 후기, 저장한 상품, 최근 추천 상품과 사용자 정보를 다시 확인할 수 있도록 구성했습니다.</p><div className="fitme-feature-chips">{fitmeCase.myPageFeatures.map((feature) => <span key={feature}>{feature}</span>)}</div></div><FitmeMedia image={images.myPage} size="medium" onOpen={setZoomImage} /></article>
+      </section>
+
+      <section className="fitme-stack" aria-labelledby="fitme-stack-title">
+        <div className="fitme-heading inverse"><span>10 / FULL STACK IMPLEMENTATION</span><h2 id="fitme-stack-title">FULL STACK <em>EXPERIENCE.</em></h2><p>Vue 화면에서 Django API와 Database까지 이어지는 흐름을 직접 연결했습니다.</p></div>
+        <div className="fitme-architecture">{fitmeCase.architecture.map((node, nodeIndex) => <article key={node.title}><span>{node.label}</span><h3>{node.title}</h3>{nodeIndex < fitmeCase.architecture.length - 1 && <i>→</i>}</article>)}</div>
+        <div className="fitme-social"><span>SOCIAL LOGIN</span>{fitmeCase.socialFlow.map((step, socialIndex) => <b key={step}>{step}{socialIndex < fitmeCase.socialFlow.length - 1 && <i>→</i>}</b>)}</div>
+        <div className="fitme-tech-grid">{fitmeCase.techStack.map((group) => <article key={group.category}><h3>{group.category}</h3><p>{group.items}</p></article>)}</div>
+      </section>
+
+      <section className="fitme-section fitme-challenges" aria-labelledby="fitme-challenges-title">
+        <div className="fitme-heading"><span>11 / CHALLENGES & SOLUTIONS</span><h2 id="fitme-challenges-title">BUILDING THE <em>CONNECTIONS.</em></h2></div>
+        <div className="fitme-challenge-list">{fitmeCase.challenges.map((challenge) => <article key={challenge.id}><span>CHALLENGE {challenge.id}</span><h3>{challenge.title}</h3><p>{challenge.solution}</p></article>)}</div>
+      </section>
+
+      <section className="fitme-ownership" aria-labelledby="fitme-ownership-title">
+        <div><span>12 / TEAM CONTRIBUTION</span><h2 id="fitme-ownership-title">TWO PEOPLE.<br /><em>CLEAR OWNERSHIP.</em></h2></div>
+        <div><article><span>MY ROLE</span><p>{fitmeCase.ownership.mine}</p></article><article><span>TEAMMATE</span><p>{fitmeCase.ownership.teammate}</p></article></div>
+      </section>
+
+      <section className="fitme-section fitme-retro" aria-labelledby="fitme-retro-title">
+        <div className="fitme-heading"><span>13 / WHAT I LEARNED</span><h2 id="fitme-retro-title">FROM FLOW <em>TO SERVICE.</em></h2></div>
+        <div className="fitme-retro-grid">{fitmeCase.retrospective.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+        <div className="fitme-final"><strong>FINAL PRESENTER</strong><p>기능을 나열하기보다 온라인 쇼핑의 Fit 문제에서 Diagnosis → Style → Product로 이어지는 서비스 Story를 정리해 최종 발표를 담당했습니다.</p></div>
+      </section>
+
+      <Link className="next-work" to={`/work/${next.slug}`}><span>NEXT PROJECT →</span><b>{next.title}</b><i>↗</i></Link>
+
+      {zoomImage && <div className="fitme-lightbox" role="dialog" aria-modal="true" aria-label="FitMe 화면 크게 보기" onClick={() => setZoomImage(null)}><button type="button" onClick={() => setZoomImage(null)} aria-label="확대 화면 닫기">CLOSE ×</button><img src={assetUrl(zoomImage.src)} alt={zoomImage.alt} onClick={(event) => event.stopPropagation()} /></div>}
+    </main>
+  );
+}
+
 function ProjectDetailPage() {
   const { slug } = useParams();
   const index = works.findIndex((project) => project.slug === slug);
@@ -1431,6 +1552,10 @@ function ProjectDetailPage() {
 
   if (project.slug === "callmebaby") {
     return <CallmebabyDetail project={project} index={index} next={next} />;
+  }
+
+  if (project.slug === "fitme") {
+    return <FitmeDetail project={project} index={index} next={next} />;
   }
 
   if (project.slug === "instagram-magazine") {
