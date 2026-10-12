@@ -294,7 +294,7 @@ export const works: Work[] = [
     slug: "samsung-open-tech-companions",
     category: "ACTIVITY",
     period: "2026.07 — 2026.12",
-    role: "Tech Content · Branding · Content Creation",
+    role: "Tech Content · Content Planning · Content Creation · Brand Communication",
     team: "BRAND ACTIVITY",
     highlight: "TECH STORY",
     summary: "기술 이야기를 이해하기 쉬운 콘텐츠와 일관된 브랜드 언어로 전달한 활동",
@@ -313,7 +313,7 @@ export const works: Work[] = [
     approach: "핵심 개념을 독자의 질문 순서에 맞춰 재배열하고, 용어와 시각적 톤을 일관되게 유지했습니다.",
     result: "기술 주제를 독자 관점의 콘텐츠로 재구성하고 일관된 브랜드 메시지로 전달했습니다.",
     results: [{ value: "TECH", label: "CONTENT & BRANDING" }],
-    skills: ["Storytelling", "Branding", "Content Creation"],
+    skills: ["Tech Research", "Content Planning", "Content Creation", "Brand Communication", "Performance Review"],
     accent: "#8FC8FF",
     heroImage: image("Samsung Open Tech Companions 대표 콘텐츠", "HERO VISUAL"),
     gallery: [

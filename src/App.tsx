@@ -22,6 +22,7 @@ import { contact, contactLinks } from "./data/contact";
 import { experiences } from "./data/experiences";
 import { fitmeCase } from "./data/fitme";
 import { skillGroups } from "./data/skills";
+import { sotcCase } from "./data/sotc";
 import { swithCase } from "./data/swith";
 import { works, type GalleryBlock, type ProjectImage, type Work } from "./data/works";
 
@@ -1520,6 +1521,100 @@ function FitmeDetail({ project, index, next }: { project: Work; index: number; n
   );
 }
 
+function SotcMedia({ image, size = "large", onOpen }: { image: ProjectImage; size?: "large" | "medium" | "tall"; onOpen: (image: ProjectImage) => void }) {
+  return (
+    <figure className={`sotc-media sotc-media-${size}`}>
+      <button type="button" onClick={() => onOpen(image)} aria-label={`${image.alt} 크게 보기`}>
+        <img src={assetUrl(image.src)} alt={image.alt} />
+        <span>VIEW +</span>
+      </button>
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
+  );
+}
+
+function SotcDetail({ project, index, next }: { project: Work; index: number; next: Work }) {
+  const [zoomImage, setZoomImage] = useState<ProjectImage | null>(null);
+  const { images } = sotcCase;
+  const accent = { "--work-accent": project.accent } as CSSProperties;
+
+  return (
+    <main className="work-detail sotc-case project-samsung-open-tech-companions" style={accent}>
+      <header className="detail-nav sotc-nav">
+        <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
+        <Link to="/">CLOSE ×</Link>
+      </header>
+
+      <section className="sotc-hero">
+        <div className="sotc-hero-copy">
+          <span className="sotc-kicker">ACTIVITY CASE / {String(index + 1).padStart(2, "0")}</span>
+          <h1>SOTC<em>7TH</em></h1>
+          <p className="sotc-full-name">{sotcCase.info.subtitle}</p>
+          <h2>{sotcCase.info.statement}</h2>
+          <div className="sotc-meta"><span>{sotcCase.info.period}</span><span>{sotcCase.info.role}</span></div>
+        </div>
+        <SotcMedia image={images.officialIntroduction} onOpen={setZoomImage} />
+      </section>
+
+      <section className="sotc-section sotc-about" aria-labelledby="sotc-about-title">
+        <div className="sotc-heading"><span>01 / ABOUT SOTC</span><h2 id="sotc-about-title">TECHNOLOGY,<br /><em>MADE ACCESSIBLE.</em></h2></div>
+        <div className="sotc-copy">{sotcCase.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="sotc-keywords"><span>PASSION</span><span>CREATIVITY</span><span>COLLABORATION</span></div></div>
+      </section>
+
+      <section className="sotc-member" aria-labelledby="sotc-member-title">
+        <div className="sotc-heading"><span>02 / OFFICIAL MEMBER</span><h2 id="sotc-member-title">CURRENT MEMBER.<br /><em>PARK KYUYEON.</em></h2><p>Samsung Open Source 공식 Members 페이지에 등록된 SOTC 7기 활동 멤버입니다.</p></div>
+        <div className="sotc-member-media"><SotcMedia image={images.officialMember} onOpen={setZoomImage} /><SotcMedia image={images.memberProfile} size="medium" onOpen={setZoomImage} /></div>
+      </section>
+
+      <section className="sotc-section sotc-role" aria-labelledby="sotc-role-title">
+        <div className="sotc-heading"><span>03 / MY ROLE</span><h2 id="sotc-role-title">MY <em>CONTRIBUTION.</em></h2><p>아래 항목은 박규연이 직접 담당하고 기여한 영역입니다.</p></div>
+        <div className="sotc-role-list">{sotcCase.roles.map((role) => <article key={role.id}><span>{role.id}</span><h3>{role.title}</h3><p>{role.description}</p></article>)}</div>
+      </section>
+
+      <section className="sotc-tech" aria-labelledby="sotc-tech-title">
+        <div className="sotc-tech-copy"><span>04 / FROM TECH TO STORY</span><h2 id="sotc-tech-title">WHERE TECH<br /><em>BECOMES STORY.</em></h2><p>삼성의 기술 콘텐츠와 Open Tech 이야기를 살펴보고, 일반 사용자도 이해하기 쉬운 방식으로 다시 전달할 소재와 관점을 찾았습니다.</p><small>REFERENCE / OFFICIAL CHANNEL</small></div>
+        <SotcMedia image={images.samsungTechBlog} onOpen={setZoomImage} />
+      </section>
+
+      <section className="sotc-workflow" aria-labelledby="sotc-workflow-title">
+        <div className="sotc-heading inverse"><span>05 / CONTENT WORKFLOW</span><h2 id="sotc-workflow-title">UNDERSTAND.<br /><em>CREATE. COMMUNICATE.</em></h2></div>
+        <ol>{sotcCase.workflow.map(([title, description], workflowIndex) => <li key={title}><span>{String(workflowIndex + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{description}</p></li>)}</ol>
+      </section>
+
+      <section className="sotc-section sotc-my-content" aria-labelledby="sotc-content-title">
+        <SotcMedia image={images.contentExample} size="tall" onOpen={setZoomImage} />
+        <div className="sotc-heading"><span>06 / MY CONTENT</span><h2 id="sotc-content-title">FROM TECH<br /><em>TO CONTENT.</em></h2><p>채널의 독자가 기술 이야기에 자연스럽게 관심을 가질 수 있도록 메시지, 화면 구성과 전달 순서를 설계했습니다.</p><div className="sotc-proof"><b>CONTENT EDITOR</b><span>SOTC 7기 박규연</span></div></div>
+      </section>
+
+      <section className="sotc-channels" aria-labelledby="sotc-channels-title">
+        <div className="sotc-channel-copy"><span>07 / CHANNEL ECOSYSTEM</span><h2 id="sotc-channels-title">ONE STORY,<br /><em>MULTIPLE CHANNELS.</em></h2><p>하나의 콘텐츠는 Instagram, Blog, Samsung Open Source, Samsung Tech Blog와 YouTube로 연결되어 사용자에게 전달됩니다.</p><div className="sotc-channel-list">{sotcCase.channels.map((channel) => <span key={channel}>{channel}</span>)}</div></div>
+        <SotcMedia image={images.channelLinks} size="tall" onOpen={setZoomImage} />
+      </section>
+
+      <section className="sotc-section sotc-blog" aria-labelledby="sotc-blog-title">
+        <div className="sotc-heading"><span>08 / OFFICIAL BLOG</span><h2 id="sotc-blog-title">FROM CHANNEL<br /><em>TO ARCHIVE.</em></h2><p>SOTC 공식 블로그는 여러 기수와 멤버가 만든 기술 정보와 삼성 관련 콘텐츠가 축적되는 공식 채널입니다.</p></div>
+        <div className="sotc-blog-grid"><SotcMedia image={images.blogHome} size="tall" onOpen={setZoomImage} /><SotcMedia image={images.blogPosts} size="tall" onOpen={setZoomImage} /></div>
+        <p className="sotc-disclaimer">OFFICIAL CHANNEL VIEW — 화면에 보이는 전체 게시물은 SOTC 공식 채널의 콘텐츠이며, 모두 박규연 개인 제작물이라는 의미가 아닙니다.</p>
+      </section>
+
+      <section className="sotc-performance" aria-labelledby="sotc-performance-title">
+        <div className="sotc-performance-copy"><span>09 / CONTENT PERFORMANCE</span><h2 id="sotc-performance-title">CONTENT<br />TO <em>RESPONSE.</em></h2><p>콘텐츠 게시 이후 조회수와 반응, 기존 팔로워와 비팔로워의 유입 비중을 함께 확인했습니다. 어떤 주제와 형식이 새로운 사용자에게 도달했는지 살펴보고 다음 기획의 참고점으로 활용했습니다.</p><small>ALL CONTENTS · 30-DAY INSIGHTS</small></div>
+        <div className="sotc-metrics">{sotcCase.metrics.map((metric) => <article key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></article>)}</div>
+        <SotcMedia image={images.contentInsights} size="tall" onOpen={setZoomImage} />
+      </section>
+
+      <section className="sotc-section sotc-learned" aria-labelledby="sotc-learned-title">
+        <div className="sotc-heading"><span>10 / WHAT I LEARNED</span><h2 id="sotc-learned-title">CREATE.<br />CONNECT.<br /><em>ANALYZE.</em></h2></div>
+        <div className="sotc-learned-copy"><p>기술을 잘 아는 것과 기술을 잘 전달하는 것은 서로 다른 능력이라는 것을 배웠습니다.</p><p>SOTC에서는 누가 이 이야기를 볼지, 어떤 부분에서 관심을 가질지, 어떤 순서로 보여줘야 이해하기 쉬울지를 고민했습니다. 게시 이후 반응을 확인하며 좋은 콘텐츠 역시 기획 → 제작 → 전달 → 분석의 반복 과정이라는 점을 경험했습니다.</p><div className="sotc-identity">{sotcCase.identity.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div>
+      </section>
+
+      <Link className="next-work" to={`/work/${next.slug}`}><span>NEXT WORK →</span><b>{next.title}</b><i>↗</i></Link>
+
+      {zoomImage && <div className="sotc-lightbox" role="dialog" aria-modal="true" aria-label="SOTC 화면 크게 보기" onClick={() => setZoomImage(null)}><button type="button" onClick={() => setZoomImage(null)} aria-label="확대 화면 닫기">CLOSE ×</button><img src={assetUrl(zoomImage.src)} alt={zoomImage.alt} onClick={(event) => event.stopPropagation()} /></div>}
+    </main>
+  );
+}
+
 function ProjectDetailPage() {
   const { slug } = useParams();
   const index = works.findIndex((project) => project.slug === slug);
@@ -1546,6 +1641,10 @@ function ProjectDetailPage() {
 
   if (project.slug === "fitme") {
     return <FitmeDetail project={project} index={index} next={next} />;
+  }
+
+  if (project.slug === "samsung-open-tech-companions") {
+    return <SotcDetail project={project} index={index} next={next} />;
   }
 
   if (project.slug === "instagram-magazine") {
