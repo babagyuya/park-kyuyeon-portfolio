@@ -21,6 +21,7 @@ import { certifications } from "./data/certifications";
 import { contact, contactLinks } from "./data/contact";
 import { experiences } from "./data/experiences";
 import { skillGroups } from "./data/skills";
+import { swithCase } from "./data/swith";
 import { works, type GalleryBlock, type ProjectImage, type Work } from "./data/works";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -1223,6 +1224,197 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
   );
 }
 
+function SwithMedia({ image, size = "medium", onOpen }: { image: ProjectImage; size?: "large" | "medium" | "small"; onOpen: (image: ProjectImage) => void }) {
+  return (
+    <figure className={`swith-media swith-media-${size}`}>
+      <button type="button" onClick={() => onOpen(image)} aria-label={`${image.alt} 크게 보기`}>
+        <img src={assetUrl(image.src)} alt={image.alt} />
+        <span>VIEW +</span>
+      </button>
+    </figure>
+  );
+}
+
+function SwithDetail({ project, index, next }: { project: Work; index: number; next: Work }) {
+  const [zoomImage, setZoomImage] = useState<ProjectImage | null>(null);
+  const accent = { "--work-accent": project.accent } as CSSProperties;
+  const { images } = swithCase;
+
+  return (
+    <main className="work-detail swith-case project-swith" style={accent}>
+      <header className="detail-nav">
+        <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
+        <Link to="/">CLOSE ×</Link>
+      </header>
+
+      <section className="swith-hero">
+        <div className="swith-hero-copy">
+          <span className="case-eyebrow">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+          <img className="swith-full-logo" src={assetUrl(images.logoFull.src)} alt={images.logoFull.alt} />
+          <p className="swith-kicker">STUDY WITH ME, STUDY WITH SWITH.</p>
+          <h1>오늘의 풀이가<br />내일의 <em>실력</em>이<br />될 때까지.</h1>
+          <p className="swith-hero-description">{swithCase.basicInfo.message}</p>
+          <div className="swith-meta">
+            <span>{swithCase.basicInfo.period}</span><span>{swithCase.basicInfo.team}</span><span>{swithCase.basicInfo.role}</span>
+          </div>
+        </div>
+        <SwithMedia image={images.landing} size="large" onOpen={setZoomImage} />
+      </section>
+
+      <section className="swith-award" aria-label="SWITH project award">
+        <div><span>AWARD / PROJECT RESULT</span><strong>{swithCase.award.value}</strong></div>
+        <div><h2>{swithCase.award.title}</h2><p>{swithCase.award.detail}</p></div>
+        <img src={assetUrl(images.logoSymbol.src)} alt="" />
+      </section>
+
+      <section className="swith-section swith-overview" aria-labelledby="swith-overview-title">
+        <div className="swith-heading">
+          <span>01 / PROJECT OVERVIEW</span>
+          <h2 id="swith-overview-title">스터디를 하면서<br />정작 공부보다<br /><em>더 어려웠던 것들.</em></h2>
+        </div>
+        <div className="swith-overview-copy">
+          {swithCase.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <div className="swith-entry-flow">
+            <SwithMedia image={images.login} size="small" onOpen={setZoomImage} />
+            <p><b>ENTRY FLOW</b>SSAFY와 Google 계정으로 시작하는 간결한 진입 화면입니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="swith-problem" aria-labelledby="swith-problem-title">
+        <div className="swith-heading inverse">
+          <span>02 / THE PROBLEM</span>
+          <h2 id="swith-problem-title">THREE<br /><em>FRICTIONS.</em></h2>
+        </div>
+        <div className="swith-pain-grid">
+          {swithCase.painPoints.map((point) => (
+            <article key={point.id}><span>{point.id} / {point.label}</span><h3>{point.quote}</h3><p>{point.detail}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="swith-section swith-role" aria-labelledby="swith-role-title">
+        <div className="swith-heading">
+          <span>03 / MY ROLE</span>
+          <h2 id="swith-role-title">MY<br /><em>CONTRIBUTION.</em></h2>
+          <p>박규연이 직접 담당하거나 기여한 영역입니다.</p>
+        </div>
+        <div className="swith-role-list">
+          {swithCase.roles.map((role, roleIndex) => (
+            <article key={role.title}><span>0{roleIndex + 1}</span><h3>{role.title}</h3><p>{role.description}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="swith-flow" aria-labelledby="swith-flow-title">
+        <div className="swith-flow-intro">
+          <img src={assetUrl(images.logoSymbol.src)} alt="" />
+          <div><span>04 / LEARNING FLOW</span><h2 id="swith-flow-title">ONE<br />LEARNING<br /><em>LOOP.</em></h2></div>
+        </div>
+        <div className="swith-flow-track">
+          {swithCase.learningFlow.map((step, stepIndex) => (
+            <article key={step.phase}><span>{String(stepIndex + 1).padStart(2, "0")}</span><b>{step.phase}</b><p>{step.action}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="swith-section swith-recommend" aria-labelledby="swith-recommend-title">
+        <div className="swith-feature-copy">
+          <span>05 / BEFORE THE STUDY</span>
+          <h2 id="swith-recommend-title">오늘은<br /><em>무슨 문제를 풀지?</em></h2>
+          <p>스터디원의 solved.ac 이력과 문제 풀이 데이터를 바탕으로 스터디에 적합한 문제를 추천합니다. 추천 이유와 예상 난이도도 함께 제공해 선택의 근거를 이해할 수 있도록 했습니다.</p>
+          <div className="swith-chip-row">{swithCase.recommendationFeatures.map((feature) => <span key={feature}>{feature}</span>)}</div>
+        </div>
+        <SwithMedia image={images.problemList} size="large" onOpen={setZoomImage} />
+      </section>
+
+      <section className="swith-section swith-service" aria-labelledby="swith-service-title">
+        <div className="swith-heading wide-heading">
+          <span>06 / FROM DASHBOARD TO STUDY</span>
+          <h2 id="swith-service-title">전체 일정에서<br /><em>오늘의 스터디까지.</em></h2>
+        </div>
+        <div className="swith-service-grid">
+          <article><SwithMedia image={images.dashboard} size="large" onOpen={setZoomImage} /><div><b>MAIN DASHBOARD</b><p>전체 일정, 참여 그룹, 오늘의 스터디를 한눈에 확인합니다.</p></div></article>
+          <article><SwithMedia image={images.groupDetail} size="medium" onOpen={setZoomImage} /><div><b>GROUP DETAIL</b><p>스터디 일정과 멤버, 문제 목록을 확인하고 실제 학습으로 진입합니다.</p></div></article>
+        </div>
+      </section>
+
+      <section className="swith-solve" aria-labelledby="swith-solve-title">
+        <div><span>07 / SOLVE</span><h2 id="swith-solve-title">추천받은 문제를<br /><em>바로 풀 수 있도록.</em></h2><p>문제 설명과 Code Editor를 한 화면에서 확인하고 코드를 작성·실행·제출할 수 있도록 구성했습니다.</p></div>
+        <SwithMedia image={images.problemEditor} size="large" onOpen={setZoomImage} />
+      </section>
+
+      <section className="swith-visualization" aria-labelledby="swith-visual-title">
+        <div className="swith-visual-heading"><span>08 / CODE VISUALIZATION</span><h2 id="swith-visual-title">코드가 실제로<br />어떻게 움직이는지를<br /><em>눈으로 보여주면?</em></h2></div>
+        <div className="swith-visual-media">
+          <SwithMedia image={images.codeGraph} size="large" onOpen={setZoomImage} />
+          <SwithMedia image={images.codeGrid} size="medium" onOpen={setZoomImage} />
+        </div>
+        <div className="swith-visual-steps">
+          {swithCase.visualizationSteps.map((step) => <article key={step.id}><span>{step.id}</span><h3>{step.title}</h3><p>{step.description}</p></article>)}
+        </div>
+        <div className="swith-visual-stats">
+          {swithCase.visualizationStats.map((stat) => <article key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></article>)}
+        </div>
+        <div className="swith-technical-result primary-result">
+          <span>{swithCase.technicalHighlights[0].label}</span><h3>{swithCase.technicalHighlights[0].title}</h3>
+          <div><strong>{swithCase.technicalHighlights[0].before}</strong><i>→</i><strong>{swithCase.technicalHighlights[0].after}</strong></div>
+          <p>{swithCase.technicalHighlights[0].description}</p>
+        </div>
+      </section>
+
+      <section className="swith-section swith-live" aria-labelledby="swith-live-title">
+        <div className="swith-heading"><span>09 / LIVE STUDY EXPERIENCE</span><h2 id="swith-live-title">TOGETHER,<br /><em>IN REAL TIME.</em></h2></div>
+        <div className="swith-live-content">
+          <p>실제 스터디에서는 음성 채팅, 화이트보드, 실시간 댓글, AI Insight를 통해 서로의 풀이를 비교하고 개선 방향을 확인할 수 있도록 구성했습니다.</p>
+          <div className="swith-chip-row"><span>VOICE CHAT</span><span>WHITEBOARD</span><span>LIVE COMMENT</span><span>AI INSIGHT</span></div>
+          <div className="swith-technical-result">
+            <span>{swithCase.technicalHighlights[1].label}</span><h3>{swithCase.technicalHighlights[1].title}</h3>
+            <div><strong>{swithCase.technicalHighlights[1].before}</strong><i>→</i><strong>{swithCase.technicalHighlights[1].after}</strong></div>
+            <p>{swithCase.technicalHighlights[1].description}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="swith-after" aria-labelledby="swith-after-title">
+        <div className="swith-after-heading"><span>10 / AI REPORT & REVIEW</span><h2 id="swith-after-title">스터디가 끝나도<br /><em>학습은 끝나지 않도록.</em></h2></div>
+        <article className="swith-after-row report-row"><div><b>AI STUDY REPORT</b><p>참여자, 문제, 코드, 대화 내용을 기반으로 학습 내용을 신문형 AI 리포트로 정리합니다.</p></div><SwithMedia image={images.studyReport} size="medium" onOpen={setZoomImage} /></article>
+        <article className="swith-after-row review-row"><SwithMedia image={images.reviewRecommendation} size="medium" onOpen={setZoomImage} /><div><b>REVIEW RECOMMENDATION</b><p>세션에서 풀었던 문제와 알고리즘 유형을 바탕으로 유사 문제를 추천해 다음 학습으로 연결합니다.</p></div></article>
+      </section>
+
+      <section className="swith-tech" aria-labelledby="swith-tech-title">
+        <div className="swith-tech-heading"><span>11 / TECHNICAL HIGHLIGHTS</span><h2 id="swith-tech-title">MY STACK<br /><em>& PROJECT STACK.</em></h2><p>개인 담당 영역과 6인 팀 전체 기술을 분리해 표시했습니다.</p></div>
+        <div className="swith-stack">
+          <div className="swith-my-stack"><h3>MY STACK</h3>{swithCase.myStack.map((item) => <span key={item}>{item}</span>)}</div>
+          <div className="swith-project-stack"><h3>PROJECT STACK · TEAM TECHNOLOGY</h3>{swithCase.projectStack.map((group) => <details key={group.category}><summary>{group.category}<i>+</i></summary><p>{group.items}</p></details>)}</div>
+        </div>
+      </section>
+
+      <section className="swith-results" aria-labelledby="swith-results-title">
+        <div className="swith-results-heading"><span>12 / RESULT</span><h2 id="swith-results-title">THE RESULT<br /><em>SPEAKS.</em></h2></div>
+        <div className="swith-result-grid">
+          {swithCase.results.map((result, resultIndex) => <article className={resultIndex === 0 ? "award-result" : ""} key={result.label}><strong>{result.value}</strong><span>{result.label}</span></article>)}
+        </div>
+      </section>
+
+      <section className="swith-section swith-retrospective" aria-labelledby="swith-retro-title">
+        <div className="swith-heading"><span>13 / WHAT I LEARNED</span><h2 id="swith-retro-title">FROM FEATURES<br /><em>TO A STORY.</em></h2></div>
+        <div className="swith-retro-list">{swithCase.retrospective.map((item, itemIndex) => <article key={item.title}><span>0{itemIndex + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+        <blockquote>“오늘의 풀이가<br />내일의 실력이 될 때까지.”</blockquote>
+      </section>
+
+      <Link className="next-work" to={`/work/${next.slug}`}><span>NEXT PROJECT →</span><b>{next.title}</b><i>↗</i></Link>
+
+      {zoomImage && (
+        <div className="swith-lightbox" role="dialog" aria-modal="true" aria-label="SWITH 화면 크게 보기" onClick={() => setZoomImage(null)}>
+          <button type="button" onClick={() => setZoomImage(null)} aria-label="확대 화면 닫기">CLOSE ×</button>
+          <img src={assetUrl(zoomImage.src)} alt={zoomImage.alt} onClick={(event) => event.stopPropagation()} />
+        </div>
+      )}
+    </main>
+  );
+}
+
 function ProjectDetailPage() {
   const { slug } = useParams();
   const index = works.findIndex((project) => project.slug === slug);
@@ -1238,6 +1430,10 @@ function ProjectDetailPage() {
   }
 
   const next = works[(index + 1) % works.length];
+
+  if (project.slug === "swith") {
+    return <SwithDetail project={project} index={index} next={next} />;
+  }
 
   if (project.slug === "callmebaby") {
     return <CallmebabyDetail project={project} index={index} next={next} />;
