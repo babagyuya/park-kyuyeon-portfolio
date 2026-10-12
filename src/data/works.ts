@@ -4,6 +4,7 @@ import fashionFitContent from "../assets/instagram-magazine/fashion-fit-content.
 import beautyContent from "../assets/instagram-magazine/beauty-content.png";
 import instagramFeedOverview from "../assets/instagram-magazine/instagram-feed-overview.png";
 import instagramReelsPerformance from "../assets/instagram-magazine/instagram-reels-performance.png";
+import { callmebabyCase } from "./callmebaby";
 
 export type ProjectImage = {
   src: string;
@@ -132,10 +133,10 @@ export const works: Work[] = [
     slug: "callmebaby",
     category: "PRODUCT",
     period: "2026",
-    role: "Frontend · UI/UX Improvement · User Experience · Final Presentation",
-    team: "TEAM PROJECT",
-    highlight: "INTERACTIVE UX",
-    summary: "아이와 부모가 영상통화를 통해 관계를 이어갈 수 있도록 설계한 인터랙티브 커뮤니케이션 서비스",
+    role: "Frontend · UI/UX Improvement · User Feedback · Final Presentation",
+    team: "6 PEOPLE",
+    highlight: "SHARED EXPERIENCE",
+    summary: "멀리 떨어진 부모와 아이가 영상통화와 공동 활동을 통해 일상의 이야기를 이어갈 수 있도록 만든 가족 커뮤니케이션 서비스",
     overview: [
       "영상통화를 단순한 대화 도구가 아니라 아이와 부모가 함께 참여하는 시간으로 만들기 위한 프로젝트입니다.",
       "통화의 흐름을 방해하지 않는 낮은 진입 장벽의 인터랙션을 중심으로 경험을 구성했습니다.",
@@ -152,11 +153,15 @@ export const works: Work[] = [
     myRole: ["Frontend 구현과 UI/UX 개선, 사용자 경험 분석을 담당했으며 프로젝트 최종 발표까지 맡았습니다.", "관계와 상황의 맥락을 먼저 이해하고 기능의 노출 시점과 조작 단계를 조정했습니다."],
     challenge: "통화 중 사용하는 기능은 작은 마찰도 대화의 몰입을 깨뜨릴 수 있었습니다.",
     approach: "상호작용 단계를 줄이고 통화 화면 안에서 바로 이해할 수 있는 피드백을 제공했습니다.",
-    result: "영상통화 안에서 함께 참여할 수 있는 인터랙티브 경험을 서비스 흐름에 연결했습니다.",
-    results: [{ value: "UX", label: "INTERACTIVE COMMUNICATION" }],
+    result: "영상통화, 공동 그림판, 대화 추천, 그림일기를 하나의 가족 커뮤니케이션 경험으로 연결하고 15명의 사용자 반응을 확인했습니다.",
+    results: [
+      { value: "6", label: "TEAM MEMBERS" },
+      { value: "15", label: "USER TESTERS" },
+      { value: "FINAL", label: "PRESENTER" },
+    ],
     skills: ["Vue", "JavaScript", "UX", "Frontend", "Final Presentation"],
     accent: "#F3A6B6",
-    heroImage: image("CALLMEBABY 대표 서비스 화면", "HERO VISUAL"),
+    heroImage: callmebabyCase.heroImage,
     gallery: [
       { type: "full", title: "VIDEO EXPERIENCE", images: [image("CALLMEBABY 영상통화 화면")] },
       { type: "before-after", title: "UI IMPROVEMENT", images: [image("개선 전 화면", "BEFORE"), image("개선 후 화면", "AFTER")] },

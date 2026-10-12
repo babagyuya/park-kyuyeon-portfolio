@@ -1765,3 +1765,1034 @@ p {
     gap: 14px;
   }
 }
+
+/* CALLMEBABY — product, realtime and family communication case study */
+.callmebaby-case {
+  --baby-yellow: #f4cd45;
+  --baby-lavender: #8a72d6;
+  --baby-cream: #faf7ef;
+  --baby-gutter: clamp(24px, 4vw, 64px);
+  background: var(--baby-cream);
+}
+
+.callmebaby-hero {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.65fr) minmax(560px, 1.35fr);
+  align-items: center;
+  gap: clamp(42px, 6vw, 110px);
+  min-height: 100svh;
+  padding: 13vh var(--baby-gutter) 7vh;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.callmebaby-hero-copy {
+  min-width: 0;
+}
+
+.callmebaby-hero h1 {
+  margin: clamp(40px, 6vh, 70px) 0 28px;
+  font: 700 clamp(72px, 8.5vw, 142px) / 0.72 "Space Grotesk";
+  letter-spacing: -0.08em;
+}
+
+.callmebaby-hero h1 em,
+.callmebaby-heading h2 em,
+.callmebaby-core-heading h2 em,
+.callmebaby-home-bridge h2 em,
+.callmebaby-diary-copy h2 em,
+.callmebaby-system-heading h2 em {
+  color: var(--baby-yellow);
+  font-style: normal;
+}
+
+.callmebaby-hero-copy > p {
+  max-width: 570px;
+  margin: 0;
+  color: #ccc;
+  font-size: clamp(17px, 1.3vw, 21px);
+  line-height: 1.7;
+}
+
+.callmebaby-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 30px;
+}
+
+.callmebaby-meta span {
+  padding: 7px 10px;
+  border: 1px solid #ffffff5c;
+  border-radius: 99px;
+  font: 700 9px "Space Grotesk";
+  letter-spacing: 0.1em;
+}
+
+.callmebaby-hero-copy > strong {
+  display: block;
+  margin-top: 34px;
+  padding-top: 14px;
+  border-top: 1px solid #ffffff52;
+  color: var(--baby-yellow);
+  font: 700 11px/1.6 "Space Grotesk";
+  letter-spacing: 0.1em;
+}
+
+.callmebaby-hero-copy > strong i {
+  padding: 0 7px;
+  color: var(--paper);
+  font-style: normal;
+}
+
+.callmebaby-media {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.callmebaby-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.callmebaby-hero-media {
+  background: #1c1c1c;
+}
+
+.callmebaby-hero-media img {
+  max-height: 74vh;
+}
+
+.callmebaby-section {
+  padding: clamp(90px, 11vw, 180px) var(--baby-gutter);
+  border-bottom: 1px solid #111;
+}
+
+.callmebaby-overview,
+.callmebaby-role,
+.callmebaby-deep-dive,
+.callmebaby-response,
+.callmebaby-retrospective {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(50px, 8vw, 150px);
+}
+
+.callmebaby-heading > span,
+.callmebaby-core-heading > span,
+.callmebaby-feature-copy > span,
+.callmebaby-home-bridge > div > span,
+.callmebaby-diary-copy > span,
+.callmebaby-system-heading > span {
+  font: 700 11px "Space Grotesk";
+  letter-spacing: 0.14em;
+}
+
+.callmebaby-heading h2,
+.callmebaby-core-heading h2,
+.callmebaby-home-bridge h2,
+.callmebaby-system-heading h2 {
+  margin: 22px 0 0;
+  font: 700 clamp(48px, 6.5vw, 108px) / 0.85 "Space Grotesk";
+  letter-spacing: -0.065em;
+  white-space: pre-line;
+}
+
+.callmebaby-heading h2 em,
+.callmebaby-core-heading h2 em,
+.callmebaby-home-bridge h2 em,
+.callmebaby-system-heading h2 em {
+  color: var(--baby-lavender);
+}
+
+.callmebaby-copy {
+  align-self: end;
+  max-width: 760px;
+}
+
+.callmebaby-copy p,
+.deep-dive-intro,
+.ownership-note {
+  margin: 0 0 22px;
+  font-size: clamp(18px, 1.55vw, 24px);
+  line-height: 1.7;
+}
+
+.callmebaby-problem {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.callmebaby-problem .compact-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5vw;
+  align-items: end;
+  margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+.callmebaby-problem .compact-heading h2 {
+  margin-top: 0;
+}
+
+.callmebaby-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #ffffff4d;
+  border-bottom: 1px solid #ffffff4d;
+}
+
+.callmebaby-problem-grid article {
+  min-width: 0;
+  padding: 26px clamp(22px, 3vw, 48px) 40px 0;
+  border-right: 1px solid #ffffff4d;
+}
+
+.callmebaby-problem-grid article + article {
+  padding-left: clamp(22px, 3vw, 48px);
+}
+
+.callmebaby-problem-grid article:last-child {
+  border-right: 0;
+}
+
+.callmebaby-problem-grid span,
+.callmebaby-role-list article > span,
+.drawing-detail-grid article > span,
+.retrospective-list article > span {
+  color: var(--baby-yellow);
+  font: 700 10px "Space Grotesk";
+  letter-spacing: 0.1em;
+}
+
+.callmebaby-problem-grid h3 {
+  margin: 72px 0 18px;
+  font: 700 clamp(25px, 3vw, 45px) / 0.95 "Space Grotesk";
+  letter-spacing: -0.05em;
+}
+
+.callmebaby-problem-grid p {
+  margin: 0;
+  color: #bbb;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.ownership-note {
+  max-width: 520px;
+  margin-top: 32px;
+  color: #666;
+  font-size: 15px;
+}
+
+.callmebaby-role-list {
+  border-top: 1px solid #111;
+}
+
+.callmebaby-role-list article {
+  display: grid;
+  grid-template-columns: 42px minmax(170px, 0.7fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 27px 0;
+  border-bottom: 1px solid #111;
+}
+
+.callmebaby-role-list article > span,
+.drawing-detail-grid article > span,
+.retrospective-list article > span {
+  color: var(--baby-lavender);
+}
+
+.callmebaby-role-list h3,
+.drawing-detail-grid h3,
+.retrospective-list h3 {
+  margin: 0;
+  font: 700 clamp(22px, 2.2vw, 34px) / 1.15 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.callmebaby-role-list p,
+.drawing-detail-grid p,
+.retrospective-list p {
+  margin: 0;
+  color: #5d5b57;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.callmebaby-core {
+  padding: clamp(90px, 10vw, 160px) var(--baby-gutter);
+  color: var(--paper);
+  background: var(--baby-lavender);
+}
+
+.callmebaby-core-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  gap: 5vw;
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 90px);
+}
+
+.callmebaby-core-heading > span {
+  grid-column: 1 / -1;
+}
+
+.callmebaby-core-heading h2 {
+  margin: 0;
+}
+
+.callmebaby-core-heading h2 em {
+  color: var(--baby-yellow);
+}
+
+.callmebaby-core-heading p {
+  margin: 0;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.45;
+}
+
+.callmebaby-core-media {
+  border: 1px solid #ffffff80;
+  background: #fff;
+}
+
+.callmebaby-core-media img {
+  max-height: 760px;
+}
+
+.callmebaby-core-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 32px;
+  border-top: 1px solid #ffffff80;
+}
+
+.callmebaby-core-points article {
+  padding: 24px 36px 18px 0;
+}
+
+.callmebaby-core-points article + article {
+  padding-left: 36px;
+  border-left: 1px solid #ffffff80;
+}
+
+.callmebaby-core-points span {
+  color: var(--baby-yellow);
+  font: 700 10px "Space Grotesk";
+}
+
+.callmebaby-core-points h3 {
+  margin: 18px 0 10px;
+  font: 700 clamp(26px, 3vw, 46px) / 0.95 "Space Grotesk";
+  letter-spacing: -0.05em;
+}
+
+.callmebaby-core-points p {
+  max-width: 620px;
+  margin: 0;
+  color: #ece5ff;
+}
+
+.feature-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5vw;
+  align-items: end;
+  margin-bottom: clamp(55px, 7vw, 110px);
+}
+
+.feature-heading h2 {
+  margin-top: 0;
+}
+
+.callmebaby-feature-list {
+  border-top: 1px solid #111;
+}
+
+.callmebaby-feature {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(40px, 7vw, 120px);
+  align-items: center;
+  padding: clamp(55px, 7vw, 110px) 0;
+  border-bottom: 1px solid #111;
+}
+
+.callmebaby-feature.feature-image-left .callmebaby-feature-copy {
+  order: 2;
+}
+
+.callmebaby-feature.feature-image-none {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.callmebaby-feature.feature-image-none .callmebaby-feature-copy {
+  grid-column: 2;
+  padding: 20px 0;
+}
+
+.callmebaby-feature-copy > span {
+  color: var(--baby-lavender);
+}
+
+.callmebaby-feature-copy h3 {
+  margin: 20px 0 22px;
+  font: 700 clamp(34px, 4.2vw, 68px) / 1.08 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: -0.055em;
+  white-space: pre-line;
+}
+
+.callmebaby-feature-copy p {
+  max-width: 570px;
+  margin: 0;
+  color: #666;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.callmebaby-feature .callmebaby-media {
+  border: 1px solid #1112;
+  background: #fff;
+}
+
+.callmebaby-feature .callmebaby-media img {
+  max-height: 610px;
+}
+
+.callmebaby-home-bridge {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.65fr) minmax(0, 1.35fr);
+  gap: clamp(48px, 7vw, 120px);
+  align-items: center;
+  padding: clamp(85px, 10vw, 150px) var(--baby-gutter);
+  background: var(--baby-yellow);
+}
+
+.callmebaby-home-bridge h2 em {
+  color: var(--baby-lavender);
+}
+
+.callmebaby-home-bridge p {
+  max-width: 480px;
+  margin: 36px 0 0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.callmebaby-home-bridge .callmebaby-media {
+  background: var(--baby-cream);
+}
+
+.callmebaby-home-bridge img {
+  max-height: 650px;
+}
+
+.callmebaby-diary-copy {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 5vw;
+  align-items: end;
+  margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+.callmebaby-diary-copy > span {
+  grid-column: 1 / -1;
+}
+
+.callmebaby-diary-copy h2 {
+  margin: 0;
+  font: 700 clamp(42px, 5.3vw, 82px) / 1.12 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.callmebaby-diary-copy h2 em {
+  color: var(--baby-lavender);
+  font-style: normal;
+}
+
+.callmebaby-diary-copy p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.callmebaby-diary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(24px, 3vw, 50px);
+  align-items: center;
+}
+
+.callmebaby-diary-grid .callmebaby-media {
+  padding: clamp(12px, 2vw, 28px);
+  background: #fff;
+}
+
+.callmebaby-diary-grid img {
+  max-height: 590px;
+}
+
+.callmebaby-deep-dive {
+  background: #f1eee6;
+}
+
+.deep-dive-intro {
+  max-width: 620px;
+  margin-top: 36px;
+  font-size: 17px;
+}
+
+.drawing-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-self: start;
+  border-top: 1px solid #111;
+}
+
+.drawing-detail-grid article {
+  min-height: 250px;
+  padding: 24px;
+  border-right: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+.drawing-detail-grid article:nth-child(even) {
+  border-right: 0;
+}
+
+.drawing-detail-grid h3 {
+  margin: 60px 0 14px;
+}
+
+.callmebaby-system {
+  padding: clamp(90px, 10vw, 160px) var(--baby-gutter);
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.callmebaby-system-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 5vw;
+  align-items: end;
+}
+
+.callmebaby-system-heading > span {
+  grid-column: 1 / -1;
+}
+
+.callmebaby-system-heading h2 {
+  margin-top: 0;
+}
+
+.callmebaby-system-heading h2 em {
+  color: var(--baby-yellow);
+}
+
+.callmebaby-system-heading p {
+  margin: 0;
+  color: #bbb;
+  line-height: 1.7;
+}
+
+.callmebaby-ai-flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin-top: clamp(70px, 8vw, 120px);
+  border-top: 1px solid #ffffff52;
+  border-bottom: 1px solid #ffffff52;
+}
+
+.callmebaby-ai-flow div {
+  position: relative;
+  min-width: 0;
+  min-height: 155px;
+  padding: 20px 14px;
+  border-right: 1px solid #ffffff52;
+}
+
+.callmebaby-ai-flow div:last-child {
+  border-right: 0;
+}
+
+.callmebaby-ai-flow div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -11px;
+  bottom: 22px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: #111;
+  background: var(--baby-yellow);
+  border-radius: 50%;
+}
+
+.callmebaby-ai-flow span {
+  color: var(--baby-yellow);
+  font: 700 9px "Space Grotesk";
+}
+
+.callmebaby-ai-flow b {
+  display: block;
+  margin-top: 55px;
+  font: 700 clamp(13px, 1.35vw, 20px) / 1.1 "Space Grotesk";
+  overflow-wrap: anywhere;
+}
+
+.callmebaby-ai-result {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-top: 60px;
+  padding: 36px;
+  color: #111;
+  background: var(--baby-yellow);
+}
+
+.callmebaby-ai-result > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.callmebaby-ai-result span,
+.callmebaby-ai-result small {
+  font: 700 9px "Space Grotesk";
+  letter-spacing: 0.11em;
+}
+
+.callmebaby-ai-result strong {
+  margin: 16px 0 8px;
+  font: 700 clamp(50px, 6vw, 90px) / 0.8 "Space Grotesk";
+  letter-spacing: -0.07em;
+}
+
+.callmebaby-ai-result > i {
+  font-size: 32px;
+  font-style: normal;
+}
+
+.callmebaby-ai-result .improvement {
+  padding-left: 26px;
+  border-left: 1px solid #111;
+}
+
+.callmebaby-ai-result > p {
+  grid-column: 1 / -1;
+  max-width: 900px;
+  margin: 24px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid #111;
+  line-height: 1.7;
+}
+
+.callmebaby-architecture,
+.callmebaby-tech {
+  margin-top: clamp(70px, 8vw, 120px);
+}
+
+.callmebaby-architecture > h3,
+.callmebaby-tech > h3 {
+  margin: 0 0 28px;
+  color: var(--baby-yellow);
+  font: 700 clamp(28px, 3vw, 44px) / 1 "Space Grotesk";
+  letter-spacing: -0.04em;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px;
+}
+
+.architecture-grid article {
+  min-width: 0;
+  padding: 22px;
+  background: #222;
+}
+
+.architecture-grid article > span,
+.callmebaby-tech-list article > span {
+  color: var(--baby-yellow);
+  font: 700 9px "Space Grotesk";
+  letter-spacing: 0.12em;
+}
+
+.architecture-grid article > div {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.architecture-grid b {
+  font: 600 15px "Space Grotesk";
+}
+
+.architecture-grid i {
+  color: #777;
+  font-style: normal;
+}
+
+.callmebaby-tech-list {
+  border-top: 1px solid #ffffff52;
+}
+
+.callmebaby-tech-list article {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.4fr) minmax(0, 1.6fr);
+  gap: 30px;
+  padding: 18px 0;
+  border-bottom: 1px solid #ffffff52;
+}
+
+.callmebaby-tech-list p {
+  margin: 0;
+  color: #ccc;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.user-response-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  align-self: start;
+  background: #111;
+}
+
+.user-response-grid article {
+  display: flex;
+  flex-direction: column;
+  min-height: 390px;
+  padding: 28px;
+  background: var(--baby-yellow);
+}
+
+.user-response-grid strong {
+  font: 700 clamp(70px, 8vw, 125px) / 0.8 "Space Grotesk";
+  letter-spacing: -0.08em;
+}
+
+.user-response-grid h3 {
+  margin: auto 0 16px;
+  font: 700 clamp(21px, 2.2vw, 34px) / 1.2 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.user-response-grid p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.callmebaby-results {
+  color: var(--paper);
+  background: var(--baby-lavender);
+}
+
+.callmebaby-results .compact-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5vw;
+  align-items: end;
+  margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+.callmebaby-results .compact-heading h2 {
+  margin-top: 0;
+}
+
+.callmebaby-results .compact-heading h2 em {
+  color: var(--baby-yellow);
+}
+
+.callmebaby-result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid #ffffff80;
+  border-bottom: 1px solid #ffffff80;
+}
+
+.callmebaby-result-grid article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  padding: 24px;
+  border-right: 1px solid #ffffff80;
+}
+
+.callmebaby-result-grid article:last-child {
+  border-right: 0;
+}
+
+.callmebaby-result-grid strong {
+  font: 700 clamp(48px, 6vw, 92px) / 0.82 "Space Grotesk";
+  letter-spacing: -0.07em;
+}
+
+.callmebaby-result-grid span {
+  font: 700 10px "Space Grotesk";
+  letter-spacing: 0.11em;
+}
+
+.retrospective-list {
+  border-top: 1px solid #111;
+}
+
+.retrospective-list article {
+  display: grid;
+  grid-template-columns: 42px minmax(230px, 0.75fr) minmax(0, 1.25fr);
+  gap: 24px;
+  padding: 30px 0;
+  border-bottom: 1px solid #111;
+}
+
+@media (max-width: 1200px) {
+  .callmebaby-hero {
+    grid-template-columns: minmax(270px, 0.6fr) minmax(500px, 1.4fr);
+  }
+
+  .callmebaby-hero h1 {
+    font-size: clamp(68px, 8vw, 105px);
+  }
+
+  .callmebaby-ai-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .callmebaby-ai-flow div:nth-child(3) {
+    border-right: 0;
+  }
+
+  .callmebaby-ai-flow div:nth-child(-n + 3) {
+    border-bottom: 1px solid #ffffff52;
+  }
+
+  .callmebaby-ai-flow div:nth-child(3)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .callmebaby-hero {
+    grid-template-columns: 1fr;
+    padding-top: 16vh;
+  }
+
+  .callmebaby-hero h1 {
+    font-size: clamp(82px, 16vw, 145px);
+  }
+
+  .callmebaby-hero-media {
+    width: min(100%, 920px);
+  }
+
+  .callmebaby-overview,
+  .callmebaby-role,
+  .callmebaby-deep-dive,
+  .callmebaby-response,
+  .callmebaby-retrospective,
+  .callmebaby-home-bridge {
+    grid-template-columns: 1fr;
+  }
+
+  .architecture-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .callmebaby-section,
+  .callmebaby-core,
+  .callmebaby-system,
+  .callmebaby-home-bridge,
+  .callmebaby-hero {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .callmebaby-heading h2,
+  .callmebaby-core-heading h2,
+  .callmebaby-home-bridge h2,
+  .callmebaby-system-heading h2 {
+    font-size: clamp(44px, 12vw, 72px);
+  }
+
+  .callmebaby-problem .compact-heading,
+  .feature-heading,
+  .callmebaby-results .compact-heading,
+  .callmebaby-core-heading,
+  .callmebaby-system-heading,
+  .callmebaby-diary-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .callmebaby-problem-grid,
+  .callmebaby-core-points,
+  .callmebaby-diary-grid,
+  .user-response-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .callmebaby-problem-grid article,
+  .callmebaby-problem-grid article + article,
+  .callmebaby-core-points article,
+  .callmebaby-core-points article + article {
+    padding: 25px 0 34px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #ffffff4d;
+  }
+
+  .callmebaby-problem-grid article:last-child,
+  .callmebaby-core-points article:last-child {
+    border-bottom: 0;
+  }
+
+  .callmebaby-problem-grid h3 {
+    margin-top: 38px;
+  }
+
+  .callmebaby-role-list article,
+  .retrospective-list article {
+    grid-template-columns: 34px 1fr;
+  }
+
+  .callmebaby-role-list p,
+  .retrospective-list p {
+    grid-column: 2;
+  }
+
+  .callmebaby-feature,
+  .callmebaby-feature.feature-image-none {
+    grid-template-columns: 1fr;
+  }
+
+  .callmebaby-feature.feature-image-left .callmebaby-feature-copy {
+    order: 0;
+  }
+
+  .callmebaby-feature.feature-image-none .callmebaby-feature-copy {
+    grid-column: auto;
+  }
+
+  .callmebaby-diary-copy > span,
+  .callmebaby-system-heading > span {
+    grid-column: auto;
+  }
+
+  .drawing-detail-grid,
+  .architecture-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drawing-detail-grid article,
+  .drawing-detail-grid article:nth-child(even) {
+    min-height: 220px;
+    border-right: 0;
+  }
+
+  .callmebaby-ai-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .callmebaby-ai-flow div,
+  .callmebaby-ai-flow div:nth-child(3) {
+    min-height: 100px;
+    border-right: 0;
+    border-bottom: 1px solid #ffffff52;
+  }
+
+  .callmebaby-ai-flow div:not(:last-child)::after,
+  .callmebaby-ai-flow div:nth-child(3)::after {
+    content: "↓";
+    right: 12px;
+    bottom: -11px;
+    display: grid;
+  }
+
+  .callmebaby-ai-flow b {
+    margin-top: 28px;
+  }
+
+  .callmebaby-ai-result {
+    grid-template-columns: 1fr 1fr;
+    padding: 24px;
+  }
+
+  .callmebaby-ai-result > i {
+    display: none;
+  }
+
+  .callmebaby-ai-result .improvement {
+    grid-column: 1 / -1;
+    padding: 20px 0 0;
+    border-top: 1px solid #111;
+    border-left: 0;
+  }
+
+  .callmebaby-tech-list article {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .callmebaby-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .callmebaby-result-grid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .callmebaby-result-grid article:nth-child(-n + 2) {
+    border-bottom: 1px solid #ffffff80;
+  }
+
+  .callmebaby-case .next-work b {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 420px) {
+  .callmebaby-section,
+  .callmebaby-core,
+  .callmebaby-system,
+  .callmebaby-home-bridge,
+  .callmebaby-hero {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .callmebaby-hero h1 {
+    font-size: 23vw;
+  }
+
+  .callmebaby-meta span {
+    font-size: 8px;
+  }
+
+  .callmebaby-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .callmebaby-result-grid article,
+  .callmebaby-result-grid article:nth-child(2) {
+    min-height: 190px;
+    border-right: 0;
+    border-bottom: 1px solid #ffffff80;
+  }
+
+  .callmebaby-result-grid article:last-child {
+    border-bottom: 0;
+  }
+}

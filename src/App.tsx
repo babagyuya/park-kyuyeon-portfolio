@@ -16,6 +16,7 @@ import {
 } from "react-router-dom";
 import { interests, modes, numbers, profile } from "./data/profile";
 import { brandCollaborations } from "./data/brandCollaborations";
+import { callmebabyCase } from "./data/callmebaby";
 import { certifications } from "./data/certifications";
 import { contact, contactLinks } from "./data/contact";
 import { experiences } from "./data/experiences";
@@ -955,6 +956,275 @@ function InstagramMagazineDetail({ project, index, next }: { project: Work; inde
   );
 }
 
+function CallmebabyMedia({ image, className = "" }: { image: ProjectImage; className?: string }) {
+  return (
+    <figure className={`callmebaby-media ${className}`}>
+      <img src={assetUrl(image.src)} alt={image.alt} />
+    </figure>
+  );
+}
+
+function CallmebabyDetail({ project, index, next }: { project: Work; index: number; next: Work }) {
+  const accent = { "--work-accent": project.accent } as CSSProperties;
+
+  return (
+    <main className="work-detail callmebaby-case project-callmebaby" style={accent}>
+      <header className="detail-nav">
+        <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
+        <Link to="/">CLOSE ×</Link>
+      </header>
+
+      <section className="callmebaby-hero">
+        <div className="callmebaby-hero-copy">
+          <span className="case-eyebrow">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+          <h1>CALL<br />ME<br /><em>BABY</em></h1>
+          <p>멀리 떨어진 부모와 아이가 영상통화와 공동 활동을 통해 일상의 이야기를 자연스럽게 이어갈 수 있도록 만든 가족 커뮤니케이션 서비스</p>
+          <div className="callmebaby-meta">
+            <span>2026</span>
+            <span>6 PEOPLE</span>
+            <span>FRONTEND</span>
+            <span>UX IMPROVEMENT</span>
+            <span>FINAL PRESENTATION</span>
+          </div>
+          <strong>REAL-TIME COMMUNICATION <i>+</i> SHARED EXPERIENCE</strong>
+        </div>
+        <CallmebabyMedia image={callmebabyCase.heroImage} className="callmebaby-hero-media" />
+      </section>
+
+      <section className="callmebaby-section callmebaby-overview" aria-labelledby="callmebaby-overview-title">
+        <div className="callmebaby-heading">
+          <span>01 / PROJECT OVERVIEW</span>
+          <h2 id="callmebaby-overview-title">{callmebabyCase.overview.title}</h2>
+        </div>
+        <div className="callmebaby-copy">
+          {callmebabyCase.overview.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-problem" aria-labelledby="callmebaby-problem-title">
+        <div className="callmebaby-heading compact-heading">
+          <span>02 / THE PROBLEM</span>
+          <h2 id="callmebaby-problem-title">WHY A<br /><em>SHARED</em><br />EXPERIENCE?</h2>
+        </div>
+        <div className="callmebaby-problem-grid">
+          {callmebabyCase.problems.map((problem) => (
+            <article key={problem.id}>
+              <span>{problem.id}</span>
+              <h3>{problem.title}</h3>
+              <p>{problem.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-role" aria-labelledby="callmebaby-role-title">
+        <div className="callmebaby-heading">
+          <span>03 / MY ROLE</span>
+          <h2 id="callmebaby-role-title">MY<br /><em>CONTRIBUTION.</em></h2>
+          <p className="ownership-note">아래 항목은 박규연이 직접 담당하거나 기여한 영역입니다.</p>
+        </div>
+        <div className="callmebaby-role-list">
+          {callmebabyCase.roles.map((role, roleIndex) => (
+            <article key={role.title}>
+              <span>{String(roleIndex + 1).padStart(2, "0")}</span>
+              <h3>{role.title}</h3>
+              <p>{role.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-core" aria-labelledby="callmebaby-core-title">
+        <div className="callmebaby-core-heading">
+          <span>04 / CORE EXPERIENCE</span>
+          <h2 id="callmebaby-core-title">MORE THAN<br /><em>A VIDEO CALL.</em></h2>
+          <p>얼굴을 보는 통화에서 함께 무언가를 하는 시간으로.</p>
+        </div>
+        <CallmebabyMedia image={callmebabyCase.coreImage} className="callmebaby-core-media" />
+        <div className="callmebaby-core-points">
+          {callmebabyCase.coreExperiences.map((experience, experienceIndex) => (
+            <article key={experience.title}>
+              <span>0{experienceIndex + 1}</span>
+              <h3>{experience.title}</h3>
+              <p>{experience.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-features" aria-labelledby="callmebaby-features-title">
+        <div className="callmebaby-heading feature-heading">
+          <span>05 / FEATURE FLOW</span>
+          <h2 id="callmebaby-features-title">ONE<br />CONNECTED<br /><em>JOURNEY.</em></h2>
+        </div>
+        <div className="callmebaby-feature-list">
+          {callmebabyCase.features.map((feature) => (
+            <article className={`callmebaby-feature feature-image-${feature.imagePosition}`} key={feature.id}>
+              <div className="callmebaby-feature-copy">
+                <span>{feature.id} / {feature.label}</span>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+              {feature.image && <CallmebabyMedia image={feature.image} />}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-home-bridge" aria-labelledby="callmebaby-home-title">
+        <div>
+          <span>SERVICE FLOW / HOME</span>
+          <h2 id="callmebaby-home-title">ONE<br />CONNECTED<br /><em>EXPERIENCE.</em></h2>
+          <p>로그인 이후 사용자는 영상통화와 그림일기라는 두 개의 핵심 경험으로 바로 이동할 수 있습니다.</p>
+        </div>
+        <CallmebabyMedia image={callmebabyCase.homeImage} />
+      </section>
+
+      <section className="callmebaby-section callmebaby-diary" aria-labelledby="callmebaby-diary-title">
+        <div className="callmebaby-diary-copy">
+          <span>06 / MEMORY</span>
+          <h2 id="callmebaby-diary-title">통화가 끝난 뒤에도<br /><em>이야기는 남습니다.</em></h2>
+          <p>통화 내용을 기반으로 아이의 이야기와 부모의 메모, 함께 그린 그림을 하나의 그림일기로 정리해 가족의 기록으로 남길 수 있습니다.</p>
+        </div>
+        <div className="callmebaby-diary-grid">
+          <CallmebabyMedia image={callmebabyCase.diaryCompleteImage} className="diary-complete" />
+          <CallmebabyMedia image={callmebabyCase.diaryDetailImage} className="diary-detail" />
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-deep-dive" aria-labelledby="callmebaby-deep-title">
+        <div className="callmebaby-heading">
+          <span>07 / FRONTEND DEEP DIVE · MY CONTRIBUTION</span>
+          <h2 id="callmebaby-deep-title">하나의 화면에서<br /><em>같은 그림을 그리기 위해</em></h2>
+          <p className="deep-dive-intro">LiveKit Data Packet을 활용해 영상통화 중 부모와 아이의 그림판 상태를 실시간으로 동기화했습니다.</p>
+        </div>
+        <div className="drawing-detail-grid">
+          {callmebabyCase.drawingDetails.map((detail) => (
+            <article key={detail.id}>
+              <span>{detail.id}</span>
+              <h3>{detail.title}</h3>
+              <p>{detail.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-system" aria-labelledby="callmebaby-system-title">
+        <div className="callmebaby-system-heading">
+          <span>08 / PROJECT SYSTEM · TEAM TECHNOLOGY</span>
+          <h2 id="callmebaby-system-title">FROM VOICE<br /><em>TO MEMORY.</em></h2>
+          <p>이 영역은 박규연 개인 구현이 아닌 6인 팀 프로젝트 전체 시스템과 기술을 설명합니다.</p>
+        </div>
+
+        <div className="callmebaby-ai-flow" aria-label="AI experience flow">
+          {callmebabyCase.systemFlow.map((step, stepIndex) => (
+            <div key={step}><span>{String(stepIndex + 1).padStart(2, "0")}</span><b>{step}</b></div>
+          ))}
+        </div>
+
+        <div className="callmebaby-ai-result">
+          <div>
+            <span>PROJECT AI RESULT</span>
+            <strong>{callmebabyCase.aiResult.before}</strong>
+            <small>BASE CER</small>
+          </div>
+          <i>→</i>
+          <div>
+            <span>TEAM RESULT</span>
+            <strong>{callmebabyCase.aiResult.after}</strong>
+            <small>FINAL CER</small>
+          </div>
+          <div className="improvement">
+            <strong>{callmebabyCase.aiResult.improvement}</strong>
+            <small>RELATIVE IMPROVEMENT</small>
+          </div>
+          <p>{callmebabyCase.aiResult.description}</p>
+        </div>
+
+        <div className="callmebaby-architecture">
+          <h3>SYSTEM ARCHITECTURE</h3>
+          <div className="architecture-grid">
+            {Object.entries(callmebabyCase.architecture).map(([flow, nodes]) => (
+              <article key={flow}>
+                <span>{flow.toUpperCase()}</span>
+                {nodes.map((node, nodeIndex) => (
+                  <div key={node}><b>{node}</b>{nodeIndex < nodes.length - 1 && <i>↓</i>}</div>
+                ))}
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="callmebaby-tech">
+          <h3>PROJECT TECH STACK</h3>
+          <div className="callmebaby-tech-list">
+            {callmebabyCase.techStack.map((group) => (
+              <article key={group.category}>
+                <span>{group.category}</span>
+                <p>{group.items.join(" · ")}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-response" aria-labelledby="callmebaby-response-title">
+        <div className="callmebaby-heading">
+          <span>09 / USER FEEDBACK & IMPROVEMENT</span>
+          <h2 id="callmebaby-response-title">USER<br /><em>RESPONSE.</em></h2>
+          <p className="ownership-note">15명의 사용자 테스트를 통해 서비스에 대한 흥미도와 가족 간 유대감 형성에 대한 반응을 확인했습니다.</p>
+        </div>
+        <div className="user-response-grid">
+          {callmebabyCase.userResponse.map((response) => (
+            <article key={response.label}>
+              <strong>{response.value}</strong>
+              <h3>{response.label}</h3>
+              <p>{response.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-results" aria-labelledby="callmebaby-results-title">
+        <div className="callmebaby-heading compact-heading">
+          <span>10 / RESULT</span>
+          <h2 id="callmebaby-results-title">BUILT.<br />TESTED.<br /><em>PRESENTED.</em></h2>
+        </div>
+        <div className="callmebaby-result-grid">
+          {callmebabyCase.results.map((result) => (
+            <article key={result.label}>
+              <strong>{result.value}</strong>
+              <span>{result.label}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-retrospective" aria-labelledby="callmebaby-retro-title">
+        <div className="callmebaby-heading">
+          <span>11 / RETROSPECTIVE</span>
+          <h2 id="callmebaby-retro-title">WHAT<br />HAPPENED.<br /><em>WHAT CHANGED.</em></h2>
+        </div>
+        <div className="retrospective-list">
+          {callmebabyCase.retrospective.map((item, retroIndex) => (
+            <article key={item.title}>
+              <span>{String(retroIndex + 1).padStart(2, "0")}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <Link className="next-work" to={`/work/${next.slug}`}>
+        <span>NEXT PROJECT →</span>
+        <b>{next.title}</b>
+        <i>↗</i>
+      </Link>
+    </main>
+  );
+}
+
 function ProjectDetailPage() {
   const { slug } = useParams();
   const index = works.findIndex((project) => project.slug === slug);
@@ -970,6 +1240,10 @@ function ProjectDetailPage() {
   }
 
   const next = works[(index + 1) % works.length];
+
+  if (project.slug === "callmebaby") {
+    return <CallmebabyDetail project={project} index={index} next={next} />;
+  }
 
   if (project.slug === "instagram-magazine") {
     return <InstagramMagazineDetail project={project} index={index} next={next} />;
