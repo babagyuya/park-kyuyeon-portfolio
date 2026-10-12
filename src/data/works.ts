@@ -6,6 +6,7 @@ import instagramFeedOverview from "../assets/instagram-magazine/instagram-feed-o
 import instagramReelsPerformance from "../assets/instagram-magazine/instagram-reels-performance.png";
 import swithLanding from "../assets/projects/swith/swith-landing.png";
 import fitmeLanding from "../assets/projects/fitme/fitme-landing.png";
+import sotcOfficialIntroduction from "../assets/projects/sotc/sotc-official-introduction.png";
 import { callmebabyCase } from "./callmebaby";
 
 export type ProjectImage = {
@@ -315,7 +316,11 @@ export const works: Work[] = [
     results: [{ value: "TECH", label: "CONTENT & BRANDING" }],
     skills: ["Tech Research", "Content Planning", "Content Creation", "Brand Communication", "Performance Review"],
     accent: "#8FC8FF",
-    heroImage: image("Samsung Open Tech Companions 대표 콘텐츠", "HERO VISUAL"),
+    heroImage: {
+      src: sotcOfficialIntroduction,
+      alt: "Samsung Open Source의 SOTC 공식 활동 소개 화면",
+      caption: "SOTC OFFICIAL INTRODUCTION",
+    },
     gallery: [
       { type: "full", title: "TECH CONTENT", images: [image("기술 콘텐츠 대표 이미지")] },
       { type: "two-column", title: "CONTENT SERIES", images: [image("기술 콘텐츠 1"), image("기술 콘텐츠 2")] },
