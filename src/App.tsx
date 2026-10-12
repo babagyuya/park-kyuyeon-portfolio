@@ -198,31 +198,31 @@ function Hero() {
       timeline.current = reel;
 
       reel
-        .fromTo(".intro-word", { yPercent: 110 }, { yPercent: 0, duration: 0.42 })
+        .fromTo(".intro-word", { yPercent: 110 }, { yPercent: 0, duration: 0.65 })
         .from(
           ".intro-meta span",
-          { y: 18, opacity: 0, stagger: 0.04, duration: 0.22 },
+          { y: 18, opacity: 0, stagger: 0.07, duration: 0.3 },
           "-=.25",
         )
         .to(
           ".intro-screen",
           {
             clipPath: "inset(0 0 100% 0)",
-            duration: 0.38,
+            duration: 0.7,
             ease: "power4.inOut",
           },
-          "+=.08",
+          "+=.25",
         )
         .set(".intro-screen", { display: "none" });
 
-      const timing = [0.9, 1.7, 2.5, 3.3, 4.1, 4.9, 5.7, 6.5];
+      const timing = [1.25, 3.15, 5.1, 7.1, 9.1, 11.15, 13.15, 15.05];
       beats.forEach((beat, index) => {
-        reel.to(beat, { autoAlpha: 1, yPercent: 0, duration: 0.32 }, timing[index]);
+        reel.to(beat, { autoAlpha: 1, yPercent: 0, duration: 0.52 }, timing[index]);
         if (index < beats.length - 1) {
           reel.to(
             beat,
-            { autoAlpha: 0, yPercent: -10, duration: 0.22, ease: "power2.in" },
-            timing[index] + 0.56,
+            { autoAlpha: 0, yPercent: -10, duration: 0.38, ease: "power2.in" },
+            timing[index] + 1.45,
           );
         }
       });
@@ -230,12 +230,12 @@ function Hero() {
       reel
         .from(
           ".kinetic-word",
-          { yPercent: 120, rotate: 4, stagger: 0.04, duration: 0.3 },
+          { yPercent: 120, rotate: 4, stagger: 0.08, duration: 0.45 },
           timing[1],
         )
         .from(
           ".role-line",
-          { xPercent: (index) => (index % 2 ? 35 : -35), stagger: 0.04, duration: 0.3 },
+          { xPercent: (index) => (index % 2 ? 35 : -35), stagger: 0.06, duration: 0.45 },
           timing[2],
         )
         .from(
@@ -243,14 +243,14 @@ function Hero() {
           {
             scale: 0,
             rotate: () => gsap.utils.random(-12, 12),
-            stagger: 0.025,
-            duration: 0.22,
+            stagger: 0.04,
+            duration: 0.3,
           },
           timing[3],
         )
         .from(
           ".number-block",
-          { scale: 0.75, opacity: 0, stagger: 0.04, duration: 0.3 },
+          { scale: 0.75, opacity: 0, stagger: 0.08, duration: 0.5 },
           timing[4],
         )
         .from(
@@ -258,19 +258,19 @@ function Hero() {
           {
             xPercent: (index) => (index % 2 ? 120 : -120),
             rotate: (index) => (index % 2 ? 5 : -5),
-            stagger: 0.04,
-            duration: 0.32,
+            stagger: 0.06,
+            duration: 0.55,
           },
           timing[5],
         )
         .from(
           ".statement-line",
-          { yPercent: 120, stagger: 0.05, duration: 0.3 },
+          { yPercent: 120, stagger: 0.12, duration: 0.48 },
           timing[6],
         )
         .from(
           ".final-line",
-          { yPercent: 110, stagger: 0.05, duration: 0.4 },
+          { yPercent: 110, stagger: 0.09, duration: 0.65 },
           timing[7],
         );
     }, root);
@@ -310,7 +310,7 @@ function Hero() {
         {["FRONTEND", "AI / DATA", "PRODUCT", "MARKETING", "CONTENT"].map((role) => (
           <div className="role-line" key={role}>{role}</div>
         ))}
-        <div className="not-one">ONE PRACTICE.</div>
+        <div className="not-one">NOT JUST ONE.</div>
       </div>
 
       <div className="showreel-beat beat-flash">
@@ -374,7 +374,7 @@ function Hero() {
         onClick={() => timeline.current?.progress(1)}
         className="skip-reel"
       >
-        SKIP INTRO
+        SKIP 15S
       </button>
       <div className="reel-index">PKY / IDENTITY REEL</div>
     </section>
