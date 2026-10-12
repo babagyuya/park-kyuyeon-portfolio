@@ -1020,7 +1020,7 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
       <section className="callmebaby-section callmebaby-role" aria-labelledby="callmebaby-role-title">
         <div className="callmebaby-heading">
           <span>03 / MY ROLE</span>
-          <h2 id="callmebaby-role-title">MY<br /><em>CONTRIBUTION.</em></h2>
+          <h2 id="callmebaby-role-title">MY <em>CONTRIBUTION.</em></h2>
           <p className="ownership-note">아래 항목은 박규연이 직접 담당하거나 기여한 영역입니다.</p>
         </div>
         <div className="callmebaby-role-list">
@@ -1055,11 +1055,11 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
       <section className="callmebaby-section callmebaby-features" aria-labelledby="callmebaby-features-title">
         <div className="callmebaby-heading feature-heading">
           <span>05 / FEATURE FLOW</span>
-          <h2 id="callmebaby-features-title">ONE<br />CONNECTED<br /><em>JOURNEY.</em></h2>
+          <h2 id="callmebaby-features-title">ONE CONNECTED <em>JOURNEY.</em></h2>
         </div>
         <div className="callmebaby-feature-list">
           {callmebabyCase.features.map((feature) => (
-            <article className={`callmebaby-feature feature-image-${feature.imagePosition}`} key={feature.id}>
+            <article className={`callmebaby-feature feature-${feature.id} feature-image-${feature.imagePosition}`} key={feature.id}>
               <div className="callmebaby-feature-copy">
                 <span>{feature.id} / {feature.label}</span>
                 <h3>{feature.title}</h3>
@@ -1070,7 +1070,7 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
           ))}
           <article className="callmebaby-feature callmebaby-feature-diary">
             <div className="callmebaby-feature-copy">
-              <span>05 / AI DIARY</span>
+              <span>04 / AI DIARY</span>
               <h3>통화가 끝난 뒤에도{`\n`}이야기는 남습니다.</h3>
               <p>통화 내용을 기반으로 아이의 이야기와 부모의 메모, 함께 그린 그림을 하나의 그림일기로 정리해 가족의 기록으로 남길 수 있습니다.</p>
             </div>
@@ -1081,7 +1081,7 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
           </article>
           <article className="callmebaby-feature callmebaby-feature-home">
             <div className="callmebaby-feature-copy">
-              <span>06 / HOME</span>
+              <span>05 / HOME</span>
               <h3>두 개의 핵심 경험으로{`\n`}바로 이동합니다.</h3>
               <p>로그인 이후 사용자는 영상통화와 그림일기 중 오늘 필요한 활동을 고르고, 끊김 없이 다음 경험으로 이동할 수 있습니다.</p>
             </div>

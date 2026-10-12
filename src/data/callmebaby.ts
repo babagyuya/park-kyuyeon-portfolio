@@ -75,13 +75,6 @@ export const callmebabyCase = {
       image: media(aiTopicImage, "아이 관심사 기반 AI 후속 질문 추천 화면"),
       imagePosition: "right",
     },
-    {
-      id: "04",
-      label: "SHARED DRAWING",
-      title: "말이 끊기면\n함께 그림을 그립니다.",
-      description: "영상통화 중 하나의 캔버스를 공유해 부모와 아이가 실시간으로 함께 그림을 완성합니다. 바로 위 CORE EXPERIENCE의 큰 화면에서 영상통화와 공동 그림판이 동시에 작동하는 실제 흐름을 보여줍니다.",
-      imagePosition: "none",
-    },
   ] satisfies CallmebabyFeature[],
   drawingDetails: [
     { id: "01", title: "좌표 정규화", description: "픽셀 좌표 대신 캔버스 비율 좌표를 사용해 서로 다른 화면에서도 동일한 위치를 표현" },
