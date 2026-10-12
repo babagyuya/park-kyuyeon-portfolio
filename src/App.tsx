@@ -1260,9 +1260,9 @@ function SwithDetail({ project, index, next }: { project: Work; index: number; n
       </section>
 
       <section className="swith-award" aria-label="SWITH project award">
-        <div className="swith-award-badge" aria-hidden="true">🏆</div>
-        <div className="swith-award-rank"><span>AWARD WINNER / PROJECT RESULT</span><strong>{swithCase.award.value}</strong></div>
-        <div className="swith-award-copy"><span>수상명</span><h2>{swithCase.award.title}</h2><p>{swithCase.award.detail}</p></div>
+        <div className="swith-award-rank"><span>AWARD / PROJECT RESULT</span><strong>{swithCase.award.value}</strong></div>
+        <div className="swith-award-copy"><span>SSAFY AWARD</span><h2>{swithCase.award.title}</h2><p>{swithCase.award.detail}</p></div>
+        <img src={assetUrl(images.logoSymbol.src)} alt="" />
       </section>
 
       <section className="swith-section swith-overview" aria-labelledby="swith-overview-title">
