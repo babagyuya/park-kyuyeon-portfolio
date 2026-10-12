@@ -33,15 +33,36 @@ npm run build
 ```text
 src/
 ├─ data/
-│  ├─ profile.ts       # 소개, 숫자, 경험, 기술, 연락처
-│  └─ projects.ts      # 프로젝트 카드와 한국어 Case Study
+│  ├─ profile.ts                 # 소개, 숫자, 관심사
+│  ├─ works.ts                   # 프로젝트와 Case Study, 이미지 Gallery
+│  ├─ experiences.ts             # 전체 이력
+│  ├─ skills.ts                  # 기술 카테고리
+│  ├─ certifications.ts          # 자격사항
+│  ├─ brandCollaborations.ts     # 브랜드 협업
+│  └─ contact.ts                 # 공개 연락처
 ├─ App.tsx             # 페이지, 모션, 라우팅
 ├─ main.tsx
 ├─ original.css        # 기존 배포 디자인에서 복구한 스타일
-└─ styles.css          # 한국어 렌더링과 보완 스타일
+└─ styles.css          # Pretendard, Case Study, 반응형 보완 스타일
 ```
 
-실제 이메일, GitHub, LinkedIn, Instagram 주소와 프로젝트별 상세 수치가 확인되지 않은 곳은 명시적인 placeholder로 관리합니다. 공개 전에 `src/data/profile.ts`와 `src/data/projects.ts`를 실제 정보로 교체하세요.
+GitHub와 LinkedIn은 실제 주소가 추가될 때까지 placeholder로 표시됩니다. 공개 연락처는 `src/data/contact.ts`에서 관리합니다.
+
+## Project Images
+
+프로젝트 이미지는 `public/images/projects/<project-slug>/` 아래에 저장합니다.
+
+예를 들어 `public/images/projects/swith/hero.webp`를 추가했다면 `src/data/works.ts`에서 다음과 같이 경로를 넣습니다.
+
+```ts
+heroImage: {
+  src: "/images/projects/swith/hero.webp",
+  alt: "SWITH 대표 서비스 화면",
+  caption: "HERO VISUAL",
+}
+```
+
+`heroImage`, `process[].image`, `gallery[].images[]`의 `src`가 빈 문자열이면 디자인 시스템에 맞춘 placeholder가 표시됩니다. 경로를 입력하면 같은 위치에 실제 이미지가 자동으로 렌더링됩니다.
 
 ## Deployment
 

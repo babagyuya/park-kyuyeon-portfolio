@@ -1,13 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Noto+Sans+KR:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css");
 @import "./original.css";
 
 :root {
-  font-family: "DM Sans", "Noto Sans KR", sans-serif;
+  font-family: "DM Sans", "Pretendard Variable", Pretendard, sans-serif;
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
 }
 
 body {
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+p {
+  min-width: 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 .nav-button {
@@ -29,45 +53,1039 @@ body {
 .mode-row > p,
 .work-intro p,
 .work-title-wrap p,
-.journey-list p,
+.brand-intro p,
+.brand-card p,
+.journey-sticky p,
+.journey-organization,
 .skill-group p,
+.certification-heading p,
+.certification-list p,
 .interest-list > p,
-.contact-bottom > p,
-.detail-lead,
-.detail-section p {
-  font-family: "Noto Sans KR", "DM Sans", sans-serif;
+.contact-person p,
+.case-hero-copy > p,
+.case-copy,
+.process-copy,
+.solution-flow p,
+.gallery-block header p {
+  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", sans-serif;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
-.placeholder-link {
-  letter-spacing: 0.1em;
-  border-bottom: 1px solid #111;
-  justify-content: space-between;
-  padding: 10px 0;
-  font: 700 12px Space Grotesk;
+.about-copy p,
+.what-heading p,
+.work-intro p,
+.brand-intro p,
+.journey-sticky p,
+.certification-heading p,
+.interest-list > p,
+.contact-person p,
+.case-hero-copy > p,
+.case-copy p,
+.process-copy p,
+.solution-flow p {
+  font-size: clamp(17px, 1.35vw, 20px);
+}
+
+.about-copy,
+.what-heading > p,
+.work-intro > p,
+.brand-intro > p,
+.journey-sticky > p,
+.certification-heading > p,
+.case-copy,
+.process-copy p {
+  max-width: 760px;
+}
+
+.mode-tags span,
+.skill-chips span,
+.detail-tags span,
+.journey-details span {
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* Brand collaboration */
+.brand-section {
+  padding-top: 38px;
+}
+
+.brand-intro,
+.certification-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.8fr);
+  align-items: end;
+  gap: 6vw;
+  margin: 9vw 0 7vw;
+}
+
+.brand-intro h2,
+.certification-heading h2 {
+  margin: 0;
+  font: 700 clamp(58px, 9.1vw, 145px) / 0.83 "Space Grotesk";
+  letter-spacing: -0.075em;
+}
+
+.brand-intro h2 span,
+.certification-heading h2 span {
+  color: var(--aqua);
+}
+
+.brand-intro {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.brand-intro > p {
+  width: min(100%, 640px);
+  margin: 0 0 0 auto;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid #ffffff59;
+  border-bottom: 1px solid #ffffff59;
+}
+
+.brand-card {
+  min-width: 0;
+  padding: 20px;
+  border-right: 1px solid #ffffff59;
+}
+
+.brand-card:last-child {
+  border-right: 0;
+}
+
+.brand-card-head {
   display: flex;
-  color: #777;
+  justify-content: space-between;
+  color: var(--aqua);
+  font: 700 10px "Space Grotesk";
+  letter-spacing: 0.12em;
 }
 
-.placeholder-badge {
+.brand-media {
+  margin: 30px 0;
+}
+
+.brand-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.brand-card h3 {
+  margin: 0 0 10px;
+  font: 700 clamp(26px, 2.7vw, 42px) / 0.95 "Space Grotesk";
+  letter-spacing: -0.05em;
+  word-break: keep-all;
+}
+
+.brand-card > strong {
+  display: block;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-size: 17px;
+}
+
+.brand-card > p {
+  margin: 18px 0 0;
+  color: #bdbdbd;
+  font-size: 16px;
+}
+
+/* Experience */
+.journey-layout {
+  grid-template-columns: minmax(360px, 0.85fr) minmax(0, 1.35fr);
+  gap: clamp(56px, 7vw, 130px);
+}
+
+.journey-sticky {
+  top: 110px;
+  min-width: 0;
+}
+
+.journey-sticky h2 {
+  max-width: 100%;
+  font-size: clamp(64px, 8.2vw, 132px);
+  line-height: 0.88;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.journey-sticky h2 span {
   display: inline-block;
-  margin-top: 16px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  padding: 6px 10px;
-  font: 700 10px Space Grotesk;
+  padding-bottom: 0.08em;
+}
+
+.journey-sticky > p {
+  position: relative;
+  z-index: 1;
+  margin: 48px 0 0;
+}
+
+.journey-list li {
+  min-width: 0;
+  padding: 0 0 92px 72px;
+}
+
+.journey-list time {
+  display: block;
+  font: 700 clamp(14px, 1.15vw, 17px) / 1.2 "Space Grotesk";
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.journey-list h3 {
+  max-width: 760px;
+  margin: 22px 0 14px;
+  font: 700 clamp(30px, 3.2vw, 52px) / 1.05 "Space Grotesk";
+  letter-spacing: -0.045em;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.journey-organization {
+  max-width: 680px;
+  margin: 0;
+  font-size: clamp(18px, 1.55vw, 22px);
+  font-weight: 600;
+}
+
+.journey-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.journey-details span {
+  padding: 6px 11px;
+  border: 1px solid #111;
+  border-radius: 99px;
+  font: 600 12px "Pretendard Variable", Pretendard, sans-serif;
+}
+
+/* Skills */
+.skill-group {
+  grid-template-columns: 42px minmax(190px, 0.8fr) minmax(340px, 1.45fr) minmax(250px, 1fr);
+  gap: clamp(20px, 2.6vw, 48px);
+}
+
+.skill-group h3 {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.skill-chips {
+  align-items: flex-start;
+}
+
+.skill-chips span {
+  flex: 0 0 auto;
+  font-size: 13px;
+}
+
+.skill-group p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Certifications */
+.certification-section {
+  padding-top: 38px;
+}
+
+.certification-list {
+  border-top: 1px solid #111;
+}
+
+.certification-list article {
+  display: grid;
+  grid-template-columns: 48px minmax(240px, 1.3fr) minmax(180px, 0.8fr) minmax(260px, 1fr);
+  align-items: center;
+  gap: 3vw;
+  min-width: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid #111;
+}
+
+.certification-list article > span {
+  font: 700 10px "Space Grotesk";
+}
+
+.certification-list h3 {
+  margin: 0;
+  font: 700 clamp(30px, 4vw, 60px) / 1 "Space Grotesk";
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.certification-list strong {
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-size: clamp(19px, 1.8vw, 26px);
+}
+
+.certification-list p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Contact */
+.contact-person {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-person > strong {
+  font: 700 clamp(26px, 3vw, 44px) / 1.1 "Pretendard Variable", Pretendard, sans-serif;
+}
+
+.contact-person > span {
+  margin-top: 5px;
+  font: 700 14px "Space Grotesk";
   letter-spacing: 0.08em;
 }
 
-@media (max-width: 560px) {
-  body {
-    word-break: keep-all;
+.contact-person p {
+  margin: 28px 0 0;
+}
+
+.contact-links a,
+.placeholder-link {
+  min-width: 0;
+}
+
+.contact-links a > span,
+.placeholder-link > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.contact-links small,
+.placeholder-link small {
+  color: #666;
+  font: 500 14px "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.contact-links a > b,
+.placeholder-link > b {
+  align-self: center;
+  font-size: 16px;
+}
+
+.placeholder-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #111;
+  color: #777;
+  font: 700 12px "Space Grotesk";
+  letter-spacing: 0.1em;
+}
+
+/* Shared image placeholder */
+.editorial-placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 220px;
+  padding: clamp(18px, 2vw, 30px);
+  overflow: hidden;
+  border: 1px solid currentColor;
+  background:
+    linear-gradient(90deg, transparent 49.8%, currentColor 50%, transparent 50.2%),
+    linear-gradient(transparent 49.8%, currentColor 50%, transparent 50.2%);
+  background-size: 100% 100%;
+}
+
+.editorial-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+.editorial-placeholder > * {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-placeholder span,
+.editorial-placeholder small {
+  font: 700 10px "Space Grotesk";
+  letter-spacing: 0.12em;
+}
+
+.editorial-placeholder b {
+  align-self: center;
+  text-align: center;
+  font: 700 clamp(26px, 4vw, 64px) / 0.9 "Space Grotesk";
+  letter-spacing: -0.055em;
+}
+
+.editorial-placeholder small {
+  align-self: flex-end;
+}
+
+.editorial-placeholder.compact {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  color: var(--paper);
+}
+
+.editorial-placeholder.compact b {
+  font-size: clamp(18px, 2vw, 30px);
+}
+
+/* Case study */
+.case-study {
+  background: var(--paper);
+}
+
+.case-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 130px);
+  min-height: 100svh;
+  padding: 13vh 4vw 7vh;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.case-hero-copy {
+  min-width: 0;
+}
+
+.case-eyebrow,
+.case-section-title > span,
+.case-overview > div:first-child > span,
+.process-copy > span,
+.solution-flow article > span,
+.gallery-block header > span {
+  font: 700 11px "Space Grotesk";
+  letter-spacing: 0.14em;
+}
+
+.case-hero h1 {
+  margin: 7vh 0 28px;
+  font: 700 clamp(64px, 9.5vw, 158px) / 0.78 "Space Grotesk";
+  letter-spacing: -0.085em;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.case-hero-copy > p {
+  max-width: 690px;
+  margin: 0;
+  color: #d0d0d0;
+}
+
+.case-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 42px 0 0;
+  border-top: 1px solid #ffffff52;
+}
+
+.case-meta div {
+  min-width: 0;
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid #ffffff52;
+}
+
+.case-meta div:nth-child(odd) {
+  border-right: 1px solid #ffffff52;
+}
+
+.case-meta div:nth-child(even) {
+  padding-left: 16px;
+}
+
+.case-meta dt {
+  color: var(--work-accent);
+  font: 700 9px "Space Grotesk";
+  letter-spacing: 0.12em;
+}
+
+.case-meta dd {
+  margin: 6px 0 0;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.project-media {
+  min-width: 0;
+  margin: 0;
+}
+
+.project-media > img,
+.project-media > .editorial-placeholder {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  background-color: color-mix(in srgb, var(--work-accent) 22%, #151515);
+}
+
+.media-landscape > img,
+.media-landscape > .editorial-placeholder {
+  aspect-ratio: 16 / 9;
+}
+
+.media-portrait > img,
+.media-portrait > .editorial-placeholder {
+  aspect-ratio: 3 / 4;
+}
+
+.media-square > img,
+.media-square > .editorial-placeholder {
+  aspect-ratio: 1;
+}
+
+.project-media figcaption {
+  padding-top: 9px;
+  font: 700 10px "Space Grotesk";
+  letter-spacing: 0.1em;
+}
+
+.case-hero .project-media {
+  color: var(--paper);
+}
+
+.case-overview,
+.case-section,
+.case-gallery {
+  padding: clamp(90px, 11vw, 180px) 4vw;
+}
+
+.case-overview,
+.case-split {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(50px, 8vw, 150px);
+}
+
+.case-overview h2,
+.case-section-title h2 {
+  margin: 20px 0 0;
+  font: 750 clamp(44px, 5.5vw, 80px) / 1.15 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.case-copy {
+  max-width: 760px;
+}
+
+.case-copy h3,
+.process-copy h3 {
+  margin: 0 0 26px;
+  font: 700 clamp(28px, 3.2vw, 46px) / 1.3 "Pretendard Variable", Pretendard, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.case-copy p,
+.process-copy p {
+  margin: 0 0 20px;
+}
+
+.case-wide-media {
+  padding: 0 4vw;
+}
+
+.case-wide-media .project-media > img,
+.case-wide-media .editorial-placeholder {
+  min-height: 380px;
+}
+
+.case-section {
+  border-bottom: 1px solid #111;
+}
+
+.process-section,
+.challenge-section,
+.result-section {
+  display: block;
+}
+
+.process-list {
+  margin-top: clamp(60px, 8vw, 130px);
+}
+
+.process-row {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(45px, 7vw, 120px);
+  padding: clamp(45px, 6vw, 95px) 0;
+  border-top: 1px solid #111;
+}
+
+.process-row:nth-child(even) .process-copy {
+  order: 2;
+}
+
+.process-copy > span {
+  display: block;
+  margin-bottom: 22px;
+  color: #666;
+}
+
+.solution-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(60px, 8vw, 130px);
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+.solution-flow article {
+  position: relative;
+  min-width: 0;
+  padding: 30px clamp(24px, 3vw, 52px) 45px 0;
+  border-right: 1px solid #111;
+}
+
+.solution-flow article + article {
+  padding-left: clamp(24px, 3vw, 52px);
+}
+
+.solution-flow article:last-child {
+  border-right: 0;
+}
+
+.solution-flow article:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  top: 24px;
+  right: 18px;
+  color: var(--work-accent);
+  font-size: 24px;
+}
+
+.solution-flow p {
+  margin: 55px 0 0;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(60px, 8vw, 130px);
+}
+
+.result-grid article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  padding: 22px;
+  border: 1px solid #111;
+  background: var(--work-accent);
+}
+
+.result-grid strong {
+  font: 700 clamp(72px, 11vw, 180px) / 0.78 "Space Grotesk";
+  letter-spacing: -0.085em;
+}
+
+.result-grid span {
+  font: 700 12px "Space Grotesk";
+  letter-spacing: 0.1em;
+}
+
+.case-gallery {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.case-gallery .case-section-title h2 {
+  color: var(--work-accent);
+}
+
+.gallery-block {
+  padding: clamp(50px, 7vw, 100px) 0;
+  border-top: 1px solid #ffffff52;
+}
+
+.gallery-block:first-of-type {
+  margin-top: clamp(60px, 8vw, 120px);
+}
+
+.gallery-block header {
+  display: grid;
+  grid-template-columns: 60px minmax(240px, 1fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 30px;
+}
+
+.gallery-block header h3 {
+  margin: 0;
+  font: 700 clamp(24px, 3vw, 44px) / 1 "Space Grotesk";
+  letter-spacing: -0.04em;
+}
+
+.gallery-block header p {
+  margin: 0;
+  color: #bbb;
+  font-size: 16px;
+}
+
+.gallery-media-grid {
+  display: grid;
+  gap: 2px;
+}
+
+.gallery-two-column .gallery-media-grid,
+.gallery-before-after .gallery-media-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gallery-three-column .gallery-media-grid,
+.gallery-mobile-grid .gallery-media-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gallery-image-description .gallery-media-grid {
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.5fr);
+}
+
+.case-gallery .editorial-placeholder {
+  color: var(--paper);
+}
+
+@media (max-width: 1200px) {
+  .brand-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .brand-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .brand-card:nth-child(-n + 2) {
+    border-bottom: 1px solid #ffffff59;
+  }
+
+  .skill-group {
+    grid-template-columns: 42px minmax(200px, 0.8fr) minmax(0, 1.4fr);
+  }
+
+  .skill-group p {
+    grid-column: 2 / 4;
+    max-width: 760px;
+  }
+
+  .certification-list article {
+    grid-template-columns: 42px minmax(220px, 1fr) minmax(180px, 0.7fr);
+  }
+
+  .certification-list p {
+    grid-column: 2 / 4;
+  }
+}
+
+@media (max-width: 1000px) {
+  .case-hero {
+    grid-template-columns: 1fr;
+    padding-top: 16vh;
+  }
+
+  .case-hero h1 {
+    margin-top: 5vh;
+  }
+
+  .case-hero .project-media {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 900px) {
   .about-copy p,
-  .mode-row > p,
-  .work-title-wrap p,
-  .journey-list p,
-  .detail-section p {
-    line-height: 1.55;
+  .what-heading p,
+  .work-intro p,
+  .brand-intro p,
+  .journey-sticky p,
+  .certification-heading p,
+  .contact-person p,
+  .case-hero-copy > p,
+  .case-copy p,
+  .process-copy p,
+  .solution-flow p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .brand-intro,
+  .certification-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-intro > p,
+  .certification-heading > p {
+    max-width: 680px;
+  }
+
+  .brand-intro > p {
+    margin-left: 0;
+  }
+
+  .journey-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-sticky {
+    position: static;
+  }
+
+  .journey-sticky h2 {
+    font-size: clamp(60px, 15vw, 110px);
+  }
+
+  .journey-list {
+    margin-top: 60px;
+  }
+
+  .skill-group {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .skill-group .skill-chips,
+  .skill-group p {
+    grid-column: 2;
+  }
+
+  .certification-list article {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .certification-list strong,
+  .certification-list p {
+    grid-column: 2;
+  }
+
+  .case-overview,
+  .case-split {
+    grid-template-columns: 1fr;
+  }
+
+  .process-row {
+    grid-template-columns: 1fr;
+  }
+
+  .process-row:nth-child(even) .process-copy {
+    order: 0;
+  }
+
+  .solution-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-flow article,
+  .solution-flow article + article {
+    padding: 28px 0 35px;
+    border-right: 0;
+    border-bottom: 1px solid #111;
+  }
+
+  .solution-flow article:last-child {
+    border-bottom: 0;
+  }
+
+  .solution-flow article:not(:last-child)::after {
+    top: auto;
+    right: 5px;
+    bottom: 3px;
+  }
+
+  .solution-flow p {
+    max-width: 720px;
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .section-shell,
+  .case-overview,
+  .case-section,
+  .case-gallery,
+  .case-wide-media {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .contact-section,
+  .detail-nav,
+  .next-work,
+  .case-hero {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .brand-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-intro h2 {
+    font-size: clamp(36px, 11.5vw, 56px);
+  }
+
+  .brand-card,
+  .brand-card:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid #ffffff59;
+  }
+
+  .brand-card:last-child {
+    border-bottom: 0;
+  }
+
+  .journey-list li {
+    padding: 0 0 72px 50px;
+  }
+
+  .journey-list h3 {
+    font-size: clamp(28px, 9vw, 42px);
+  }
+
+  .journey-list time {
+    white-space: normal;
+  }
+
+  .skill-chips {
+    gap: 8px;
+  }
+
+  .skill-chips span {
+    font-size: 12px;
+  }
+
+  .certification-list h3 {
+    font-size: clamp(28px, 9vw, 44px);
+    white-space: normal;
+  }
+
+  .contact-bottom {
+    gap: 50px;
+  }
+
+  .next-work {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+  }
+
+  .next-work b {
+    min-width: 0;
+    font-size: clamp(30px, 10vw, 46px);
+    white-space: nowrap;
+  }
+
+  .next-work i {
+    font-size: 42px;
+  }
+
+  .case-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-hero h1 {
+    font-size: clamp(52px, 16vw, 92px);
+  }
+
+  .case-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .case-meta div:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .case-meta div:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .case-overview h2,
+  .case-section-title h2 {
+    font-size: clamp(38px, 11vw, 58px);
+  }
+
+  .case-wide-media .project-media > img,
+  .case-wide-media .editorial-placeholder {
+    min-height: 0;
+  }
+
+  .editorial-placeholder {
+    min-height: 180px;
+  }
+
+  .editorial-placeholder b {
+    font-size: clamp(22px, 8vw, 38px);
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-grid article {
+    min-height: 190px;
+  }
+
+  .gallery-block header {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .gallery-block header p {
+    grid-column: 2;
+  }
+
+  .gallery-two-column .gallery-media-grid,
+  .gallery-before-after .gallery-media-grid,
+  .gallery-three-column .gallery-media-grid,
+  .gallery-image-description .gallery-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-mobile-grid .gallery-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .section-shell,
+  .case-overview,
+  .case-section,
+  .case-gallery,
+  .case-wide-media,
+  .contact-section,
+  .detail-nav,
+  .next-work,
+  .case-hero {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .journey-list li {
+    padding-left: 44px;
+  }
+
+  .gallery-mobile-grid .gallery-media-grid {
+    grid-template-columns: 1fr;
   }
 }

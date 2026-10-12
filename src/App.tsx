@@ -1,6 +1,5 @@
 import {
   type CSSProperties,
-  type ReactNode,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -15,22 +14,20 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
-import {
-  contactLinks,
-  experiences,
-  interests,
-  modes,
-  numbers,
-  profile,
-  skillGroups,
-} from "./data/profile";
-import { projects } from "./data/projects";
+import { interests, modes, numbers, profile } from "./data/profile";
+import { brandCollaborations } from "./data/brandCollaborations";
+import { certifications } from "./data/certifications";
+import { contact, contactLinks } from "./data/contact";
+import { experiences } from "./data/experiences";
+import { skillGroups } from "./data/skills";
+import { works, type GalleryBlock, type ProjectImage } from "./data/works";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const navigation = [
   ["ABOUT", "about"],
   ["WORK", "work"],
+  ["BRAND", "brand"],
   ["EXPERIENCE", "experience"],
   ["SKILLS", "skills"],
   ["CONTACT", "contact"],
@@ -38,6 +35,11 @@ const navigation = [
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function assetUrl(src: string) {
+  if (!src || /^(https?:|data:|blob:)/.test(src)) return src;
+  return `${import.meta.env.BASE_URL}${src.replace(/^\/+/, "")}`;
 }
 
 function Navigation() {
@@ -441,7 +443,7 @@ function WorksSection() {
         <p>제품, AI, 콘텐츠를 분리된 목록이 아니라 문제를 해결하는 사고가 이동한 기록으로 보여줍니다.</p>
       </div>
       <div className="work-list">
-        {projects.map((project, index) => (
+        {works.map((project, index) => (
           <Link
             className="work-row"
             to={`/work/${project.slug}`}
@@ -450,9 +452,9 @@ function WorksSection() {
           >
             <div className="work-order">0{index + 1}</div>
             <div className="work-title-wrap">
-              <span>{project.category} · {project.year}</span>
+              <span>{project.category} · {project.period}</span>
               <h3>{project.title}</h3>
-              <p>{project.description}</p>
+              <p>{project.summary}</p>
             </div>
             <div className="work-visual" style={{ "--work-accent": project.accent } as CSSProperties}>
               <div className="visual-orbit" />
@@ -470,10 +472,44 @@ function WorksSection() {
   );
 }
 
+function BrandCollaborationsSection() {
+  return (
+    <section id="brand" className="section-shell brand-section bg-ink text-paper" aria-labelledby="brand-title">
+      <SectionKicker index="06" label="BRAND & CONTENT" dark />
+      <div className="brand-intro" data-reveal>
+        <h2 id="brand-title">BRAND<br /><span>COLLABORATIONS.</span></h2>
+        <p>패션 · 뷰티 · 헬스케어 브랜드와 함께 콘텐츠를 기획하고 제작했습니다. 제품의 특징을 사람들의 언어와 시각으로 연결합니다.</p>
+      </div>
+      <div className="brand-grid">
+        {brandCollaborations.map((brand, index) => (
+          <article className="brand-card" key={brand.name} data-reveal>
+            <div className="brand-card-head">
+              <span>0{index + 1}</span>
+              <span>{brand.field}</span>
+            </div>
+            <div className="brand-media" aria-label={`${brand.name} 콘텐츠 이미지 영역`}>
+              {brand.image ? <img src={assetUrl(brand.image)} alt={`${brand.name} 협업 콘텐츠`} /> : (
+                <div className="editorial-placeholder compact">
+                  <span>BRAND CONTENT</span>
+                  <b>IMAGE<br />COMING SOON</b>
+                  <small>4:3</small>
+                </div>
+              )}
+            </div>
+            <h3>{brand.name}</h3>
+            <strong>{brand.title}</strong>
+            <p>{brand.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ExperienceSection() {
   return (
     <section id="experience" className="section-shell journey-section bg-aqua text-ink" aria-labelledby="journey-title">
-      <SectionKicker index="06" label="EXPERIENCE" />
+      <SectionKicker index="07" label="EXPERIENCE" />
       <div className="journey-layout">
         <div className="journey-sticky">
           <h2 id="journey-title">NOT A<br />STRAIGHT<br /><span>LINE.</span></h2>
@@ -481,11 +517,14 @@ function ExperienceSection() {
         </div>
         <ol className="journey-list">
           {experiences.map((experience, index) => (
-            <li key={`${experience.year}-${experience.title}`}>
+            <li key={`${experience.period}-${experience.title}`}>
               <span className="journey-dot">0{index + 1}</span>
-              <time>{experience.year}</time>
+              <time>{experience.period}</time>
               <h3>{experience.title}</h3>
-              <p>{experience.note}</p>
+              <p className="journey-organization">{experience.organization}</p>
+              <div className="journey-details">
+                {experience.details.map((detail) => <span key={detail}>{detail}</span>)}
+              </div>
             </li>
           ))}
         </ol>
@@ -497,7 +536,7 @@ function ExperienceSection() {
 function SkillsSection() {
   return (
     <section id="skills" className="section-shell skills-section bg-paper" aria-labelledby="skills-title">
-      <SectionKicker index="07" label="SKILLS" />
+      <SectionKicker index="08" label="SKILLS" />
       <div className="skills-intro">
         <h2 id="skills-title">TOOLS ARE<br />ONLY USEFUL<br /><span>IN CONTEXT.</span></h2>
       </div>
@@ -517,10 +556,32 @@ function SkillsSection() {
   );
 }
 
+function CertificationsSection() {
+  return (
+    <section className="section-shell certification-section bg-paper" aria-labelledby="certifications-title">
+      <SectionKicker index="09" label="CERTIFICATIONS" />
+      <div className="certification-heading" data-reveal>
+        <h2 id="certifications-title">PROOF OF<br /><span>PRACTICE.</span></h2>
+        <p>학습한 지식을 객관적인 기준으로 확인하고, 실제 문제에 적용할 수 있는 기반을 갖췄습니다.</p>
+      </div>
+      <div className="certification-list">
+        {certifications.map((certification, index) => (
+          <article key={certification.name} data-reveal>
+            <span>0{index + 1}</span>
+            <h3>{certification.name}</h3>
+            <strong>{certification.grade}</strong>
+            <p>{certification.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function BeyondSection() {
   return (
     <section className="section-shell beyond-section bg-ink text-paper" aria-labelledby="beyond-title">
-      <SectionKicker index="08" label="BEYOND THE RÉSUMÉ" dark />
+      <SectionKicker index="10" label="BEYOND THE RÉSUMÉ" dark />
       <div className="beyond-grid">
         <h2 id="beyond-title">BEYOND<br />THE<br /><em>RÉSUMÉ.</em></h2>
         <div className="beyond-window">
@@ -542,17 +603,21 @@ function ContactSection() {
   return (
     <section id="contact" className="contact-section bg-paper" aria-labelledby="contact-title">
       <p className="contact-kicker">HAVE A QUESTION, AN IDEA, OR AN UNUSUAL BRIEF?</p>
-      <h2 id="contact-title">SO, WHAT SHOULD<br />WE <span>MAKE NEXT?</span></h2>
+      <h2 id="contact-title">LET'S<br /><span>CONNECT.</span></h2>
       <div className="contact-bottom">
-        <p>제 이야기가 궁금증을 만들었다면,<br />함께 이야기해 주세요.</p>
+        <div className="contact-person">
+          <strong>{contact.nameKo}</strong>
+          <span>{contact.nameEn}</span>
+          <p>제 이야기가 궁금증을 만들었다면,<br />이메일이나 인스타그램으로 이야기해 주세요.</p>
+        </div>
         <div className="contact-links">
           {contactLinks.map((link) => link.href ? (
-            <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" key={link.label}>
-              {link.label}<span>↗</span>
+            <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined} key={link.label}>
+              <span>{link.label}<small>{link.value}</small></span><b>↗</b>
             </a>
           ) : (
             <span className="placeholder-link" title="실제 링크 추가 예정" key={link.label}>
-              {link.label}<span>UPDATE SOON</span>
+              <span>{link.label}<small>{link.value}</small></span><b>—</b>
             </span>
           ))}
         </div>
@@ -647,8 +712,10 @@ function HomePage() {
         <NumbersSection />
         <WhatIDoSection />
         <WorksSection />
+        <BrandCollaborationsSection />
         <ExperienceSection />
         <SkillsSection />
+        <CertificationsSection />
         <BeyondSection />
         <ContactSection />
       </main>
@@ -657,19 +724,61 @@ function HomePage() {
   );
 }
 
-function DetailSection({ label, children }: { label: string; children: ReactNode }) {
+function ProjectMedia({
+  image,
+  label,
+  ratio = "landscape",
+}: {
+  image: ProjectImage;
+  label: string;
+  ratio?: "landscape" | "portrait" | "square";
+}) {
+  const hasImage = image.src.trim().length > 0;
+
   return (
-    <div className="detail-section">
-      <span>{label}</span>
-      <div>{children}</div>
-    </div>
+    <figure className={`project-media media-${ratio}`}>
+      {hasImage ? (
+        <img src={assetUrl(image.src)} alt={image.alt} />
+      ) : (
+        <div className="editorial-placeholder">
+          <span>{label}</span>
+          <b>PROJECT VISUAL<br />COMING SOON</b>
+          <small>{ratio === "landscape" ? "16:9" : ratio === "portrait" ? "3:4" : "1:1"}</small>
+        </div>
+      )}
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
+  );
+}
+
+function GalleryBlockView({ block, index }: { block: GalleryBlock; index: number }) {
+  const ratio = block.type === "mobile-grid" ? "portrait" : block.type === "three-column" ? "square" : "landscape";
+
+  return (
+    <article className={`gallery-block gallery-${block.type}`}>
+      <header>
+        <span>G{String(index + 1).padStart(2, "0")}</span>
+        <h3>{block.title}</h3>
+        {block.description && <p>{block.description}</p>}
+      </header>
+      <div className="gallery-media-grid">
+        {block.images.map((image, imageIndex) => (
+          <ProjectMedia
+            image={image}
+            label={`${block.title} / ${String(imageIndex + 1).padStart(2, "0")}`}
+            ratio={ratio}
+            key={`${block.title}-${image.alt}-${imageIndex}`}
+          />
+        ))}
+      </div>
+    </article>
   );
 }
 
 function ProjectDetailPage() {
   const { slug } = useParams();
-  const index = projects.findIndex((project) => project.slug === slug);
-  const project = projects[index];
+  const index = works.findIndex((project) => project.slug === slug);
+  const project = works[index];
 
   if (!project) {
     return (
@@ -680,70 +789,143 @@ function ProjectDetailPage() {
     );
   }
 
-  const next = projects[(index + 1) % projects.length];
+  const next = works[(index + 1) % works.length];
   const accent = { "--work-accent": project.accent } as CSSProperties;
-  const sections = [
-    ["문제 정의", project.caseStudy.problem],
-    ["내 역할", project.caseStudy.role],
-    ["왜 이렇게 만들었는지", project.caseStudy.decision],
-    ["어떻게 해결했는지", project.caseStudy.solution],
-    ["문제와 시행착오", project.caseStudy.challenge],
-    ["개선 과정", project.caseStudy.improvement],
-    ["결과", project.caseStudy.result],
-    ["배운 점", project.caseStudy.learning],
+  const heroMeta = [
+    ["CATEGORY", project.category],
+    ["PERIOD", project.period],
+    ["ROLE", project.role],
+    ["TEAM", project.team],
+    ["HIGHLIGHT", project.highlight],
   ];
 
   return (
-    <main className="work-detail">
+    <main className="work-detail case-study" style={accent}>
       <header className="detail-nav">
         <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
         <Link to="/">CLOSE ×</Link>
       </header>
-      <section className="detail-hero" style={accent}>
-        <div className="detail-meta">
-          <span>{project.category}</span>
-          <span>{project.year}</span>
-          <span>CASE 0{index + 1}</span>
+
+      <section className="case-hero">
+        <div className="case-hero-copy">
+          <span className="case-eyebrow">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+          <h1>{project.title}</h1>
+          <p>{project.summary}</p>
+          <dl className="case-meta">
+            {heroMeta.map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <h1>{project.title}</h1>
-        <p>{project.role}</p>
-        <div className="detail-visual">
-          <div className="detail-disc" />
-          <div className="detail-window">
-            <span>PROJECT / {project.slug.toUpperCase()}</span>
-            <b>{project.highlight ?? "SELECTED WORK"}</b>
-            <i />
-          </div>
-        </div>
+        <ProjectMedia image={project.heroImage} label="01 / HERO IMAGE" />
       </section>
 
-      <section className="detail-body" aria-labelledby="project-overview">
-        <aside><span>PROJECT</span></aside>
+      <section className="case-overview" aria-labelledby="project-overview">
         <div>
-          <p id="project-overview" className="detail-lead">{project.description}</p>
-          <div className="detail-tags">
-            {project.skills.map((skill) => <span key={skill}>{skill}</span>)}
-          </div>
-          {project.hasPlaceholders && <span className="placeholder-badge">PLACEHOLDER DATA INCLUDED</span>}
+          <span>PROJECT OVERVIEW</span>
+          <h2 id="project-overview">프로젝트를<br />시작한 이유</h2>
         </div>
-        {sections.map(([label, copy]) => (
-          <DetailSection label={label} key={label}><p>{copy}</p></DetailSection>
-        ))}
-        <DetailSection label="사용 기술">
+        <div className="case-copy">
+          {project.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <div className="detail-tags">
             {project.skills.map((skill) => <span key={skill}>{skill}</span>)}
           </div>
-        </DetailSection>
+        </div>
       </section>
 
-      <section className="detail-gallery" style={accent} aria-label={`${project.title} Gallery`}>
-        <div>01<br /><b>PROCESS</b></div>
-        <div>02<br /><b>SYSTEM</b></div>
-        <div>03<br /><b>RESULT</b></div>
+      <section className="case-wide-media" aria-label={`${project.title} project image`}>
+        <ProjectMedia image={project.gallery[0]?.images[0] ?? project.heroImage} label="02 / PROJECT IMAGE" />
+      </section>
+
+      <section className="case-section case-split">
+        <div className="case-section-title">
+          <span>01 / PROBLEM</span>
+          <h2>문제 정의</h2>
+        </div>
+        <div className="case-copy">
+          <h3>{project.problem.title}</h3>
+          {project.problem.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section className="case-section process-section">
+        <div className="case-section-title">
+          <span>02 / PROCESS</span>
+          <h2>과정</h2>
+        </div>
+        <div className="process-list">
+          {project.process.map((step, stepIndex) => (
+            <article className="process-row" key={step.title}>
+              <div className="process-copy">
+                <span>STEP {String(stepIndex + 1).padStart(2, "0")}</span>
+                <h3>{step.title}</h3>
+                {step.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+              <ProjectMedia image={step.image} label={`PROCESS / ${String(stepIndex + 1).padStart(2, "0")}`} />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="case-section case-split role-section">
+        <div className="case-section-title">
+          <span>03 / MY ROLE</span>
+          <h2>내가 맡은 역할</h2>
+        </div>
+        <div className="case-copy">
+          {project.myRole.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section className="case-section challenge-section">
+        <div className="case-section-title">
+          <span>04 / CHALLENGE & SOLUTION</span>
+          <h2>문제와 해결</h2>
+        </div>
+        <div className="solution-flow">
+          {[
+            ["CHALLENGE", project.challenge],
+            ["APPROACH", project.approach],
+            ["RESULT", project.result],
+          ].map(([label, copy], flowIndex) => (
+            <article key={label}>
+              <span>0{flowIndex + 1} / {label}</span>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="case-section result-section">
+        <div className="case-section-title">
+          <span>05 / RESULT</span>
+          <h2>결과</h2>
+        </div>
+        <div className="result-grid">
+          {project.results.map((item) => (
+            <article key={`${item.value}-${item.label}`}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="case-gallery" aria-labelledby="gallery-title">
+        <div className="case-section-title">
+          <span>06 / GALLERY</span>
+          <h2 id="gallery-title">프로젝트 기록</h2>
+        </div>
+        {project.gallery.map((block, galleryIndex) => (
+          <GalleryBlockView block={block} index={galleryIndex} key={`${block.type}-${block.title}`} />
+        ))}
       </section>
 
       <Link className="next-work" to={`/work/${next.slug}`}>
-        <span>NEXT PROJECT</span>
+        <span>NEXT PROJECT →</span>
         <b>{next.title}</b>
         <i>↗</i>
       </Link>
@@ -753,7 +935,9 @@ function ProjectDetailPage() {
 
 function ScrollToTop() {
   const location = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [location.pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return null;
 }
 
