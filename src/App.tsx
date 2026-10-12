@@ -20,7 +20,7 @@ import { certifications } from "./data/certifications";
 import { contact, contactLinks } from "./data/contact";
 import { experiences } from "./data/experiences";
 import { skillGroups } from "./data/skills";
-import { works, type GalleryBlock, type ProjectImage } from "./data/works";
+import { works, type GalleryBlock, type ProjectImage, type Work } from "./data/works";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +39,7 @@ function scrollToSection(id: string) {
 
 function assetUrl(src: string) {
   if (!src || /^(https?:|data:|blob:)/.test(src)) return src;
+  if (src.startsWith(import.meta.env.BASE_URL)) return src;
   return `${import.meta.env.BASE_URL}${src.replace(/^\/+/, "")}`;
 }
 
@@ -455,9 +456,20 @@ function WorksSection() {
               <span>{project.category} · {project.period}</span>
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
+              {project.slug === "instagram-magazine" && (
+                <div className="work-inline-results" aria-label="Instagram Magazine 주요 성과">
+                  {project.results.map((result) => (
+                    <span key={result.label}><b>{result.value}</b>{result.label}</span>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="work-visual" style={{ "--work-accent": project.accent } as CSSProperties}>
-              <div className="visual-orbit" />
+            <div className={`work-visual ${project.heroImage.src ? "work-visual-image" : ""}`} style={{ "--work-accent": project.accent } as CSSProperties}>
+              {project.heroImage.src ? (
+                <img src={assetUrl(project.heroImage.src)} alt={project.heroImage.alt} />
+              ) : (
+                <div className="visual-orbit" />
+              )}
               <div className="visual-card">
                 <small>CASE / 0{index + 1}</small>
                 <b>{project.highlight ?? project.category}</b>
@@ -773,6 +785,176 @@ function GalleryBlockView({ block, index }: { block: GalleryBlock; index: number
   );
 }
 
+const instagramDirections = [
+  ["01", "FASHION", "패션 트렌드 · 스타일링 · 아이템 큐레이션"],
+  ["02", "BEAUTY", "제품 · 뷰티 트렌드 · 추천 콘텐츠"],
+  ["03", "LIFESTYLE", "음악 · 문화 · 관심사 기반 콘텐츠"],
+] as const;
+
+const instagramWorkflow = [
+  ["TREND RESEARCH", "트렌드와 관심 주제를 탐색"],
+  ["IDEA", "콘텐츠로 만들 주제 선정"],
+  ["STRUCTURE", "첫 화면 문구와 정보 순서 구성"],
+  ["CREATE", "이미지 및 콘텐츠 제작"],
+  ["PUBLISH", "Instagram 게시"],
+  ["ANALYZE", "조회 · 저장 · 공유 등 반응 확인"],
+  ["ITERATE", "다음 콘텐츠에 반영"],
+] as const;
+
+function InstagramMagazineDetail({ project, index, next }: { project: Work; index: number; next: Work }) {
+  const accent = { "--work-accent": project.accent } as CSSProperties;
+
+  return (
+    <main className="work-detail instagram-case project-instagram-magazine" style={accent}>
+      <header className="detail-nav">
+        <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
+        <Link to="/">CLOSE ×</Link>
+      </header>
+
+      <section className="instagram-hero">
+        <div className="instagram-hero-copy">
+          <span className="case-eyebrow">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+          <h1>INSTAGRAM<br />MAGAZINE</h1>
+          <p>Fashion · Beauty · Lifestyle</p>
+          <div className="instagram-hero-meta">
+            <span>2025.04 — 2026.04</span>
+            <span>CONTENT PLANNING</span>
+            <span>CONTENT CREATION</span>
+            <span>TREND RESEARCH</span>
+            <span>PERFORMANCE ANALYSIS</span>
+          </div>
+          <a className="instagram-cta" href={project.instagramUrl} target="_blank" rel="noopener noreferrer">
+            {project.instagramHandle} <b>VIEW INSTAGRAM ↗</b>
+          </a>
+        </div>
+        <div className="instagram-hero-visual">
+          <ProjectMedia image={project.heroImage} label="INSTAGRAM MAGAZINE / HERO" />
+        </div>
+      </section>
+
+      <section className="instagram-section instagram-about" aria-labelledby="instagram-about-title">
+        <div className="instagram-section-heading">
+          <span>01 / ABOUT THE MAGAZINE</span>
+          <h2 id="instagram-about-title">CONTENT<br />WITH A<br /><em>RESPONSE.</em></h2>
+        </div>
+        <div className="instagram-body-copy">
+          {project.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section className="instagram-section instagram-direction" aria-labelledby="instagram-direction-title">
+        <div className="instagram-section-heading">
+          <span>02 / CONTENT DIRECTION</span>
+          <h2 id="instagram-direction-title">THREE<br />DIRECTIONS.</h2>
+        </div>
+        <div className="instagram-direction-list">
+          {instagramDirections.map(([number, title, copy]) => (
+            <article key={title}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="instagram-section instagram-examples" aria-labelledby="instagram-examples-title">
+        <div className="instagram-section-heading">
+          <span>03 / CONTENT EXAMPLES</span>
+          <h2 id="instagram-examples-title">IDEAS,<br /><em>EDITED.</em></h2>
+        </div>
+        <div className="instagram-example-grid">
+          {project.contentExamples?.map((example, exampleIndex) => (
+            <article className={`instagram-example example-${exampleIndex + 1}`} key={example.title}>
+              <figure className="instagram-example-media">
+                <img src={assetUrl(example.image.src)} alt={example.image.alt} />
+              </figure>
+              <div>
+                <span>{example.category} / 0{exampleIndex + 1}</span>
+                <h3>{example.title}</h3>
+                <p>{example.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="instagram-section instagram-process" aria-labelledby="instagram-process-title">
+        <div className="instagram-section-heading">
+          <span>04 / HOW I WORKED</span>
+          <h2 id="instagram-process-title">MAKE.<br />MEASURE.<br /><em>ITERATE.</em></h2>
+        </div>
+        <ol className="instagram-workflow">
+          {instagramWorkflow.map(([title, copy], workflowIndex) => (
+            <li key={title}>
+              <span>{String(workflowIndex + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="instagram-section instagram-feed" aria-labelledby="instagram-feed-title">
+        <div className="instagram-feed-copy">
+          <span>05 / FEED OVERVIEW</span>
+          <h2 id="instagram-feed-title"><strong>230+</strong><br />CONTENTS</h2>
+          <p>약 1년 동안 230개 이상의 콘텐츠를 제작하며 패션, 뷰티, 라이프스타일 영역에서 다양한 포맷과 주제를 실험했습니다.</p>
+        </div>
+        {project.feedImage && (
+          <figure className="instagram-information-media feed-media">
+            <img src={assetUrl(project.feedImage.src)} alt={project.feedImage.alt} />
+          </figure>
+        )}
+      </section>
+
+      <section className="instagram-section instagram-performance" aria-labelledby="instagram-performance-title">
+        <div className="instagram-section-heading performance-heading">
+          <span>06 / PERFORMANCE</span>
+          <h2 id="instagram-performance-title">FROM<br />CONTENT<br /><em>TO RESPONSE.</em></h2>
+        </div>
+        <div className="instagram-results">
+          {project.results.map((result) => (
+            <article key={result.label}>
+              <strong>{result.value}</strong>
+              <span>{result.label}</span>
+            </article>
+          ))}
+        </div>
+        {project.performanceImage && (
+          <figure className="instagram-information-media performance-media">
+            <img src={assetUrl(project.performanceImage.src)} alt={project.performanceImage.alt} />
+          </figure>
+        )}
+        <div className="instagram-performance-copy">
+          <p>콘텐츠별 반응 차이를 확인하면서 어떤 주제와 구성에서 사용자가 더 오래 보고, 저장하거나 공유하는지를 관찰했습니다.</p>
+          <p>반응이 좋았던 콘텐츠를 그대로 반복하기보다 주제, 첫 화면 문구, 정보의 순서와 형식을 나눠 살펴보고 다음 콘텐츠 기획에 반영했습니다.</p>
+        </div>
+      </section>
+
+      <section className="instagram-section instagram-learned" aria-labelledby="instagram-learned-title">
+        <div className="instagram-section-heading">
+          <span>07 / WHAT I LEARNED</span>
+          <h2 id="instagram-learned-title">CREATE.<br />ANALYZE.<br /><em>CONNECT.</em></h2>
+        </div>
+        <div className="instagram-body-copy">
+          <p>같은 계정에서 제작한 콘텐츠라도 주제와 첫 화면, 정보 구조에 따라 사용자 반응은 크게 달라졌습니다.</p>
+          <p>이 경험을 통해 콘텐츠를 단순히 만드는 것보다 사용자의 반응을 관찰하고 그 이유를 다음 실행에 연결하는 과정에 관심을 갖게 되었습니다.</p>
+          <a className="instagram-cta dark" href={project.instagramUrl} target="_blank" rel="noopener noreferrer">
+            {project.instagramHandle} <b>VIEW INSTAGRAM ↗</b>
+          </a>
+        </div>
+      </section>
+
+      <Link className="next-work" to={`/work/${next.slug}`}>
+        <span>NEXT PROJECT →</span>
+        <b>{next.title}</b>
+        <i>↗</i>
+      </Link>
+    </main>
+  );
+}
+
 function ProjectDetailPage() {
   const { slug } = useParams();
   const index = works.findIndex((project) => project.slug === slug);
@@ -788,6 +970,11 @@ function ProjectDetailPage() {
   }
 
   const next = works[(index + 1) % works.length];
+
+  if (project.slug === "instagram-magazine") {
+    return <InstagramMagazineDetail project={project} index={index} next={next} />;
+  }
+
   const accent = { "--work-accent": project.accent } as CSSProperties;
   const heroMeta = [
     ["CATEGORY", project.category],

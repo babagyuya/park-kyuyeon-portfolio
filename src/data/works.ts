@@ -1,3 +1,10 @@
+import instagramMagazineShowcase from "../assets/instagram-magazine/instagram-magazine-showcase.png";
+import fashionTrendContent from "../assets/instagram-magazine/fashion-trend-content.png";
+import fashionFitContent from "../assets/instagram-magazine/fashion-fit-content.png";
+import beautyContent from "../assets/instagram-magazine/beauty-content.png";
+import instagramFeedOverview from "../assets/instagram-magazine/instagram-feed-overview.png";
+import instagramReelsPerformance from "../assets/instagram-magazine/instagram-reels-performance.png";
+
 export type ProjectImage = {
   src: string;
   alt: string;
@@ -47,6 +54,16 @@ export type Work = {
   accent: string;
   heroImage: ProjectImage;
   gallery: GalleryBlock[];
+  contentExamples?: Array<{
+    category: string;
+    title: string;
+    description: string;
+    image: ProjectImage;
+  }>;
+  feedImage?: ProjectImage;
+  performanceImage?: ProjectImage;
+  instagramHandle?: string;
+  instagramUrl?: string;
 };
 
 const image = (alt: string, caption = ""): ProjectImage => ({
@@ -180,13 +197,17 @@ export const works: Work[] = [
   {
     title: "INSTAGRAM MAGAZINE",
     slug: "instagram-magazine",
-    category: "CONTENT",
+    category: "FASHION · BEAUTY · LIFESTYLE",
     period: "2025.04 — 2026.04",
-    role: "Content · Growth · Performance Analysis",
+    role: "Content Planning · Content Creation · Trend Research · Performance Analysis",
     team: "INDEPENDENT PROJECT",
     highlight: "4.5M VIEWS",
-    summary: "콘텐츠 기획과 제작, 반응 분석을 하나의 편집 시스템으로 운영한 디지털 매거진",
-    overview: ["패션과 뷰티 콘텐츠를 일관된 편집 기준으로 발행하고 사용자 반응을 다음 기획에 반영했습니다.", "한 번의 성과보다 반복 가능한 제작 과정과 성장 실험을 만드는 데 집중했습니다."],
+    summary: "패션과 뷰티의 트렌드와 정보를 콘텐츠로 만들고, 사용자 반응을 다음 기획에 반영하며 운영한 Instagram Magazine",
+    overview: [
+      "패션과 뷰티를 중심으로 트렌드와 제품, 스타일링 정보를 소개하는 인스타그램 매거진을 약 1년간 직접 운영했습니다.",
+      "콘텐츠의 주제를 선정하고 자료를 조사한 뒤, 첫 화면의 문구와 정보 순서를 구성해 실제 게시물 제작까지 직접 진행했습니다.",
+      "조회, 저장, 공유와 같은 반응 차이를 살펴보며 다음 콘텐츠의 방향을 계속 조정했습니다.",
+    ],
     problem: {
       title: "감각과 데이터를 함께 운영하기",
       body: ["지속적으로 콘텐츠를 발행하면서도 주제와 표현의 일관성을 유지하고, 사용자 반응을 다음 기획에 반영할 체계가 필요했습니다."],
@@ -207,11 +228,51 @@ export const works: Work[] = [
     ],
     skills: ["Content Planning", "Social Media", "Growth Marketing", "Performance Analysis"],
     accent: "#FF784F",
-    heroImage: image("인스타그램 매거진 대표 콘텐츠", "HERO VISUAL"),
-    gallery: [
-      { type: "three-column", title: "CONTENT ARCHIVE", images: [image("콘텐츠 이미지 1"), image("콘텐츠 이미지 2"), image("콘텐츠 이미지 3")] },
-      { type: "image-description", title: "PERFORMANCE", description: "성과 화면과 분석 내용을 함께 배치할 수 있습니다.", images: [image("콘텐츠 성과 화면")] },
+    heroImage: {
+      src: instagramMagazineShowcase,
+      alt: "박규연이 운영한 패션 뷰티 인스타그램 매거진 대표 콘텐츠",
+      caption: "EDITORIAL CONTENT SHOWCASE",
+    },
+    contentExamples: [
+      {
+        category: "FASHION",
+        title: "패션 트렌드 콘텐츠",
+        description: "최근 트렌드를 하나의 주제로 정리해 사용자가 빠르게 정보를 파악할 수 있도록 구성했습니다.",
+        image: {
+          src: fashionTrendContent,
+          alt: "2026 패션 트렌드를 소개한 인스타그램 콘텐츠",
+        },
+      },
+      {
+        category: "FASHION",
+        title: "아이템 큐레이션",
+        description: "특정 아이템이나 스타일을 기준으로 비교하고 참고할 수 있는 형태의 콘텐츠를 제작했습니다.",
+        image: {
+          src: fashionFitContent,
+          alt: "다양한 바지 핏을 소개한 패션 콘텐츠",
+        },
+      },
+      {
+        category: "BEAUTY",
+        title: "뷰티 추천 콘텐츠",
+        description: "제품과 트렌드 정보를 짧고 직관적인 메시지로 재구성했습니다.",
+        image: {
+          src: beautyContent,
+          alt: "뷰티 제품을 소개한 인스타그램 콘텐츠",
+        },
+      },
     ],
+    feedImage: {
+      src: instagramFeedOverview,
+      alt: "패션 뷰티 콘텐츠가 게시된 인스타그램 피드",
+    },
+    performanceImage: {
+      src: instagramReelsPerformance,
+      alt: "높은 조회수를 기록한 인스타그램 릴스 콘텐츠 목록",
+    },
+    instagramHandle: "@wearproof",
+    instagramUrl: "https://instagram.com/wearproof",
+    gallery: [],
   },
   {
     title: "SAMSUNG OPEN TECH COMPANIONS",
