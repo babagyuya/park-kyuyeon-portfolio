@@ -1068,33 +1068,31 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
               {feature.image && <CallmebabyMedia image={feature.image} />}
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="callmebaby-home-bridge" aria-labelledby="callmebaby-home-title">
-        <div>
-          <span>SERVICE FLOW / HOME</span>
-          <h2 id="callmebaby-home-title">ONE<br />CONNECTED<br /><em>EXPERIENCE.</em></h2>
-          <p>로그인 이후 사용자는 영상통화와 그림일기라는 두 개의 핵심 경험으로 바로 이동할 수 있습니다.</p>
-        </div>
-        <CallmebabyMedia image={callmebabyCase.homeImage} />
-      </section>
-
-      <section className="callmebaby-section callmebaby-diary" aria-labelledby="callmebaby-diary-title">
-        <div className="callmebaby-diary-copy">
-          <span>06 / MEMORY</span>
-          <h2 id="callmebaby-diary-title">통화가 끝난 뒤에도<br /><em>이야기는 남습니다.</em></h2>
-          <p>통화 내용을 기반으로 아이의 이야기와 부모의 메모, 함께 그린 그림을 하나의 그림일기로 정리해 가족의 기록으로 남길 수 있습니다.</p>
-        </div>
-        <div className="callmebaby-diary-grid">
-          <CallmebabyMedia image={callmebabyCase.diaryCompleteImage} className="diary-complete" />
-          <CallmebabyMedia image={callmebabyCase.diaryDetailImage} className="diary-detail" />
+          <article className="callmebaby-feature callmebaby-feature-diary">
+            <div className="callmebaby-feature-copy">
+              <span>05 / AI DIARY</span>
+              <h3>통화가 끝난 뒤에도{`\n`}이야기는 남습니다.</h3>
+              <p>통화 내용을 기반으로 아이의 이야기와 부모의 메모, 함께 그린 그림을 하나의 그림일기로 정리해 가족의 기록으로 남길 수 있습니다.</p>
+            </div>
+            <div className="callmebaby-diary-grid">
+              <CallmebabyMedia image={callmebabyCase.diaryDetailImage} className="diary-detail" />
+              <CallmebabyMedia image={callmebabyCase.diaryCompleteImage} className="diary-complete" />
+            </div>
+          </article>
+          <article className="callmebaby-feature callmebaby-feature-home">
+            <div className="callmebaby-feature-copy">
+              <span>06 / HOME</span>
+              <h3>두 개의 핵심 경험으로{`\n`}바로 이동합니다.</h3>
+              <p>로그인 이후 사용자는 영상통화와 그림일기 중 오늘 필요한 활동을 고르고, 끊김 없이 다음 경험으로 이동할 수 있습니다.</p>
+            </div>
+            <CallmebabyMedia image={callmebabyCase.homeImage} />
+          </article>
         </div>
       </section>
 
       <section className="callmebaby-section callmebaby-deep-dive" aria-labelledby="callmebaby-deep-title">
         <div className="callmebaby-heading">
-          <span>07 / FRONTEND DEEP DIVE · MY CONTRIBUTION</span>
+          <span>06 / FRONTEND DEEP DIVE · MY CONTRIBUTION</span>
           <h2 id="callmebaby-deep-title">하나의 화면에서<br /><em>같은 그림을 그리기 위해</em></h2>
           <p className="deep-dive-intro">LiveKit Data Packet을 활용해 영상통화 중 부모와 아이의 그림판 상태를 실시간으로 동기화했습니다.</p>
         </div>
@@ -1109,9 +1107,41 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
         </div>
       </section>
 
+      <section className="callmebaby-section callmebaby-response" aria-labelledby="callmebaby-response-title">
+        <div className="callmebaby-heading">
+          <span>07 / USER FEEDBACK & IMPROVEMENT</span>
+          <h2 id="callmebaby-response-title">USER<br /><em>RESPONSE.</em></h2>
+          <p className="ownership-note">15명의 사용자 테스트를 통해 서비스에 대한 흥미도와 가족 간 유대감 형성에 대한 반응을 확인했습니다.</p>
+        </div>
+        <div className="user-response-grid">
+          {callmebabyCase.userResponse.map((response) => (
+            <article key={response.label}>
+              <strong>{response.value}</strong>
+              <h3>{response.label}</h3>
+              <p>{response.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="callmebaby-section callmebaby-results" aria-labelledby="callmebaby-results-title">
+        <div className="callmebaby-heading compact-heading">
+          <span>08 / RESULT</span>
+          <h2 id="callmebaby-results-title">BUILT.<br />TESTED.<br /><em>PRESENTED.</em></h2>
+        </div>
+        <div className="callmebaby-result-grid">
+          {callmebabyCase.results.map((result) => (
+            <article key={result.label}>
+              <strong>{result.value}</strong>
+              <span>{result.label}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="callmebaby-system" aria-labelledby="callmebaby-system-title">
         <div className="callmebaby-system-heading">
-          <span>08 / PROJECT SYSTEM · TEAM TECHNOLOGY</span>
+          <span>09 / PROJECT TECH & ARCHITECTURE · TEAM TECHNOLOGY</span>
           <h2 id="callmebaby-system-title">FROM VOICE<br /><em>TO MEMORY.</em></h2>
           <p>이 영역은 박규연 개인 구현이 아닌 6인 팀 프로젝트 전체 시스템과 기술을 설명합니다.</p>
         </div>
@@ -1159,50 +1189,18 @@ function CallmebabyDetail({ project, index, next }: { project: Work; index: numb
           <h3>PROJECT TECH STACK</h3>
           <div className="callmebaby-tech-list">
             {callmebabyCase.techStack.map((group) => (
-              <article key={group.category}>
-                <span>{group.category}</span>
+              <details key={group.category}>
+                <summary><span>{group.category}</span><b>{group.items.length} TOOLS</b></summary>
                 <p>{group.items.join(" · ")}</p>
-              </article>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="callmebaby-section callmebaby-response" aria-labelledby="callmebaby-response-title">
-        <div className="callmebaby-heading">
-          <span>09 / USER FEEDBACK & IMPROVEMENT</span>
-          <h2 id="callmebaby-response-title">USER<br /><em>RESPONSE.</em></h2>
-          <p className="ownership-note">15명의 사용자 테스트를 통해 서비스에 대한 흥미도와 가족 간 유대감 형성에 대한 반응을 확인했습니다.</p>
-        </div>
-        <div className="user-response-grid">
-          {callmebabyCase.userResponse.map((response) => (
-            <article key={response.label}>
-              <strong>{response.value}</strong>
-              <h3>{response.label}</h3>
-              <p>{response.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="callmebaby-section callmebaby-results" aria-labelledby="callmebaby-results-title">
-        <div className="callmebaby-heading compact-heading">
-          <span>10 / RESULT</span>
-          <h2 id="callmebaby-results-title">BUILT.<br />TESTED.<br /><em>PRESENTED.</em></h2>
-        </div>
-        <div className="callmebaby-result-grid">
-          {callmebabyCase.results.map((result) => (
-            <article key={result.label}>
-              <strong>{result.value}</strong>
-              <span>{result.label}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="callmebaby-section callmebaby-retrospective" aria-labelledby="callmebaby-retro-title">
         <div className="callmebaby-heading">
-          <span>11 / RETROSPECTIVE</span>
+          <span>10 / RETROSPECTIVE</span>
           <h2 id="callmebaby-retro-title">WHAT<br />HAPPENED.<br /><em>WHAT CHANGED.</em></h2>
         </div>
         <div className="retrospective-list">

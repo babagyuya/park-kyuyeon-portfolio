@@ -1775,6 +1775,14 @@ p {
   background: var(--baby-cream);
 }
 
+.callmebaby-case h1,
+.callmebaby-case h2,
+.callmebaby-case h3,
+.callmebaby-case p {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 .callmebaby-hero {
   display: grid;
   grid-template-columns: minmax(320px, 0.65fr) minmax(560px, 1.35fr);
@@ -1792,8 +1800,8 @@ p {
 
 .callmebaby-hero h1 {
   margin: clamp(40px, 6vh, 70px) 0 28px;
-  font: 700 clamp(72px, 8.5vw, 142px) / 0.72 "Space Grotesk";
-  letter-spacing: -0.08em;
+  font: 700 clamp(72px, 8.5vw, 142px) / 0.9 "Space Grotesk";
+  letter-spacing: -0.055em;
 }
 
 .callmebaby-hero h1 em,
@@ -1849,6 +1857,7 @@ p {
   min-width: 0;
   margin: 0;
   overflow: hidden;
+  border-radius: clamp(10px, 1.2vw, 20px);
 }
 
 .callmebaby-media img {
@@ -1867,7 +1876,7 @@ p {
 }
 
 .callmebaby-section {
-  padding: clamp(90px, 11vw, 180px) var(--baby-gutter);
+  padding: clamp(96px, 10vw, 160px) var(--baby-gutter);
   border-bottom: 1px solid #111;
 }
 
@@ -1896,8 +1905,8 @@ p {
 .callmebaby-home-bridge h2,
 .callmebaby-system-heading h2 {
   margin: 22px 0 0;
-  font: 700 clamp(48px, 6.5vw, 108px) / 0.85 "Space Grotesk";
-  letter-spacing: -0.065em;
+  font: 700 clamp(48px, 6.5vw, 108px) / 0.96 "Space Grotesk";
+  letter-spacing: -0.045em;
   white-space: pre-line;
 }
 
@@ -1970,8 +1979,8 @@ p {
 
 .callmebaby-problem-grid h3 {
   margin: 72px 0 18px;
-  font: 700 clamp(25px, 3vw, 45px) / 0.95 "Space Grotesk";
-  letter-spacing: -0.05em;
+  font: 700 clamp(25px, 3vw, 45px) / 1.04 "Space Grotesk";
+  letter-spacing: -0.035em;
 }
 
 .callmebaby-problem-grid p {
@@ -2025,7 +2034,7 @@ p {
 }
 
 .callmebaby-core {
-  padding: clamp(90px, 10vw, 160px) var(--baby-gutter);
+  padding: clamp(96px, 10vw, 160px) var(--baby-gutter);
   color: var(--paper);
   background: var(--baby-lavender);
 }
@@ -2088,8 +2097,8 @@ p {
 
 .callmebaby-core-points h3 {
   margin: 18px 0 10px;
-  font: 700 clamp(26px, 3vw, 46px) / 0.95 "Space Grotesk";
-  letter-spacing: -0.05em;
+  font: 700 clamp(26px, 3vw, 46px) / 1.04 "Space Grotesk";
+  letter-spacing: -0.035em;
 }
 
 .callmebaby-core-points p {
@@ -2143,7 +2152,7 @@ p {
 .callmebaby-feature-copy h3 {
   margin: 20px 0 22px;
   font: 700 clamp(34px, 4.2vw, 68px) / 1.08 "Pretendard Variable", Pretendard, sans-serif;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.04em;
   white-space: pre-line;
 }
 
@@ -2162,6 +2171,35 @@ p {
 
 .callmebaby-feature .callmebaby-media img {
   max-height: 610px;
+}
+
+.callmebaby-feature-diary {
+  grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1.45fr);
+}
+
+.callmebaby-feature-diary .callmebaby-diary-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(180px, 0.65fr);
+  align-items: end;
+}
+
+.callmebaby-feature-diary .callmebaby-media {
+  padding: clamp(10px, 1.4vw, 20px);
+}
+
+.callmebaby-feature-diary .diary-detail img {
+  max-height: 620px;
+}
+
+.callmebaby-feature-diary .diary-complete img {
+  max-height: 430px;
+}
+
+.callmebaby-feature-home {
+  grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1.35fr);
+}
+
+.callmebaby-feature-home .callmebaby-media {
+  background: #fff;
 }
 
 .callmebaby-home-bridge {
@@ -2223,7 +2261,7 @@ p {
 
 .callmebaby-diary-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(180px, 0.65fr);
   gap: clamp(24px, 3vw, 50px);
   align-items: center;
 }
@@ -2270,7 +2308,7 @@ p {
 }
 
 .callmebaby-system {
-  padding: clamp(90px, 10vw, 160px) var(--baby-gutter);
+  padding: clamp(96px, 10vw, 160px) var(--baby-gutter);
   color: var(--paper);
   background: var(--ink);
 }
@@ -2420,7 +2458,7 @@ p {
 }
 
 .architecture-grid article > span,
-.callmebaby-tech-list article > span {
+.callmebaby-tech-list summary > span {
   color: var(--baby-yellow);
   font: 700 9px "Space Grotesk";
   letter-spacing: 0.12em;
@@ -2446,16 +2484,44 @@ p {
   border-top: 1px solid #ffffff52;
 }
 
-.callmebaby-tech-list article {
-  display: grid;
-  grid-template-columns: minmax(160px, 0.4fr) minmax(0, 1.6fr);
-  gap: 30px;
-  padding: 18px 0;
+.callmebaby-tech-list details {
   border-bottom: 1px solid #ffffff52;
 }
 
+.callmebaby-tech-list summary {
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) auto;
+  gap: 30px;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.callmebaby-tech-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.callmebaby-tech-list summary::after {
+  content: "+";
+  grid-column: 3;
+  color: var(--baby-yellow);
+  font: 700 22px/1 "Space Grotesk";
+}
+
+.callmebaby-tech-list details[open] summary::after {
+  content: "−";
+}
+
+.callmebaby-tech-list summary b {
+  color: #777;
+  font: 700 9px "Space Grotesk";
+  letter-spacing: 0.11em;
+}
+
 .callmebaby-tech-list p {
-  margin: 0;
+  margin: 0 0 20px;
+  padding-right: 48px;
   color: #ccc;
   line-height: 1.7;
   word-break: keep-all;
@@ -2608,6 +2674,13 @@ p {
   .architecture-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .callmebaby-section,
+  .callmebaby-core,
+  .callmebaby-system {
+    padding-top: clamp(80px, 10vw, 120px);
+    padding-bottom: clamp(80px, 10vw, 120px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -2618,6 +2691,13 @@ p {
   .callmebaby-hero {
     padding-right: 24px;
     padding-left: 24px;
+  }
+
+  .callmebaby-section,
+  .callmebaby-core,
+  .callmebaby-system {
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .callmebaby-heading h2,
@@ -2673,7 +2753,9 @@ p {
   }
 
   .callmebaby-feature,
-  .callmebaby-feature.feature-image-none {
+  .callmebaby-feature.feature-image-none,
+  .callmebaby-feature-diary,
+  .callmebaby-feature-home {
     grid-template-columns: 1fr;
   }
 
@@ -2740,9 +2822,17 @@ p {
     border-left: 0;
   }
 
-  .callmebaby-tech-list article {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .callmebaby-tech-list summary {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .callmebaby-tech-list summary::after {
+    grid-column: auto;
+  }
+
+  .callmebaby-tech-list summary b {
+    display: none;
   }
 
   .callmebaby-result-grid {
@@ -2771,6 +2861,13 @@ p {
   .callmebaby-hero {
     padding-right: 20px;
     padding-left: 20px;
+  }
+
+  .callmebaby-section,
+  .callmebaby-core,
+  .callmebaby-system {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
   .callmebaby-hero h1 {
