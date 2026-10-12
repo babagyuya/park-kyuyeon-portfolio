@@ -478,26 +478,24 @@ function BrandCollaborationsSection() {
       <SectionKicker index="06" label="BRAND & CONTENT" dark />
       <div className="brand-intro" data-reveal>
         <h2 id="brand-title">BRAND<br /><span>COLLABORATIONS.</span></h2>
-        <p>패션 · 뷰티 · 헬스케어 브랜드와 함께 콘텐츠를 기획하고 제작했습니다. 제품의 특징을 사람들의 언어와 시각으로 연결합니다.</p>
+        <p>브랜드의 메시지를 사람들이 보고 싶은 콘텐츠로 바꿉니다.</p>
       </div>
       <div className="brand-grid">
         {brandCollaborations.map((brand, index) => (
-          <article className="brand-card" key={brand.name} data-reveal>
+          <article className={`brand-card brand-card-${index + 1}`} key={brand.id} data-reveal>
             <div className="brand-card-head">
               <span>0{index + 1}</span>
-              <span>{brand.field}</span>
+              <span>{brand.category}</span>
             </div>
-            <div className="brand-media" aria-label={`${brand.name} 콘텐츠 이미지 영역`}>
-              {brand.image ? <img src={assetUrl(brand.image)} alt={`${brand.name} 협업 콘텐츠`} /> : (
-                <div className="editorial-placeholder compact">
-                  <span>BRAND CONTENT</span>
-                  <b>IMAGE<br />COMING SOON</b>
-                  <small>4:3</small>
-                </div>
-              )}
+            <div className="brand-media">
+              <img src={brand.image} alt={brand.imageAlt} />
             </div>
-            <h3>{brand.name}</h3>
-            <strong>{brand.title}</strong>
+            <div className="brand-card-title">
+              <h3>{brand.brand}</h3>
+              <span>{brand.period}</span>
+            </div>
+            <strong>{brand.koreanName}</strong>
+            <small>{brand.role}</small>
             <p>{brand.description}</p>
           </article>
         ))}

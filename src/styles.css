@@ -197,19 +197,28 @@ p {
 
 .brand-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid #ffffff59;
-  border-bottom: 1px solid #ffffff59;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(90px, 11vw, 180px) clamp(36px, 6vw, 100px);
 }
 
 .brand-card {
   min-width: 0;
-  padding: 20px;
-  border-right: 1px solid #ffffff59;
+  border-top: 1px solid #ffffff59;
+  padding-top: 14px;
 }
 
-.brand-card:last-child {
-  border-right: 0;
+.brand-card:nth-child(even) {
+  margin-top: clamp(70px, 9vw, 145px);
+}
+
+.brand-card-3 {
+  width: 88%;
+}
+
+.brand-card-4 {
+  width: 92%;
+  margin-left: auto;
 }
 
 .brand-card-head {
@@ -221,27 +230,88 @@ p {
 }
 
 .brand-media {
-  margin: 30px 0;
+  margin: 24px 0 28px;
+  overflow: hidden;
+  background: #202020;
 }
 
 .brand-media img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.brand-card-1 .brand-media,
+.brand-card-2 .brand-media,
+.brand-card-4 .brand-media {
+  aspect-ratio: 4 / 5;
+}
+
+.brand-card-3 .brand-media {
+  aspect-ratio: 963 / 749;
+}
+
+.brand-card-1 .brand-media img {
+  object-position: center 34%;
+}
+
+.brand-card-2 .brand-media img,
+.brand-card-3 .brand-media img {
+  object-position: center;
+}
+
+.brand-card-4 .brand-media img {
+  object-position: center 25%;
+}
+
+@media (hover: hover) {
+  .brand-card:hover .brand-media img {
+    transform: scale(1.025);
+  }
+
+  .brand-card:hover h3 {
+    transform: translateX(5px);
+  }
+}
+
+.brand-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 10px;
 }
 
 .brand-card h3 {
-  margin: 0 0 10px;
+  margin: 0;
   font: 700 clamp(26px, 2.7vw, 42px) / 0.95 "Space Grotesk";
   letter-spacing: -0.05em;
   word-break: keep-all;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.brand-card-title > span {
+  flex: 0 0 auto;
+  color: #bdbdbd;
+  font: 700 10px "Space Grotesk";
+  letter-spacing: 0.08em;
 }
 
 .brand-card > strong {
   display: block;
   font-family: "Pretendard Variable", Pretendard, sans-serif;
   font-size: 17px;
+}
+
+.brand-card > small {
+  display: block;
+  margin-top: 8px;
+  color: var(--aqua);
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 .brand-card > p {
@@ -841,18 +911,6 @@ p {
 }
 
 @media (max-width: 1200px) {
-  .brand-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .brand-card:nth-child(2) {
-    border-right: 0;
-  }
-
-  .brand-card:nth-child(-n + 2) {
-    border-bottom: 1px solid #ffffff59;
-  }
-
   .skill-group {
     grid-template-columns: 42px minmax(200px, 0.8fr) minmax(0, 1.4fr);
   }
@@ -928,6 +986,26 @@ p {
 
   .brand-intro > p {
     margin-left: 0;
+  }
+
+  .brand-grid {
+    grid-template-columns: 1fr;
+    gap: 72px;
+  }
+
+  .brand-card,
+  .brand-card:nth-child(even),
+  .brand-card-3,
+  .brand-card-4 {
+    width: 100%;
+    margin: 0;
+    border-right: 0;
+  }
+
+  .brand-card-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .journey-layout {
@@ -1022,22 +1100,8 @@ p {
     padding-left: 24px;
   }
 
-  .brand-grid {
-    grid-template-columns: 1fr;
-  }
-
   .brand-intro h2 {
     font-size: clamp(36px, 11.5vw, 56px);
-  }
-
-  .brand-card,
-  .brand-card:nth-child(2) {
-    border-right: 0;
-    border-bottom: 1px solid #ffffff59;
-  }
-
-  .brand-card:last-child {
-    border-bottom: 0;
   }
 
   .journey-list li {

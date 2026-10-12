@@ -20,9 +20,9 @@ export const experiences: Experience[] = [
   },
   {
     period: "2026.05 — 2026.12",
-    title: "Kissing Beauty Supporters",
+    title: "Kisyning Beauty Supporters",
     organization: "키시닝뷰티 서포터즈",
-    details: ["Beauty Content", "Brand Collaboration"],
+    details: ["뷰티 콘텐츠 기획 및 제작", "Brand Collaboration"],
   },
   {
     period: "2026.01 — 2026.12",
