@@ -1867,17 +1867,11 @@ p {
   min-width: 0;
 }
 
-.swith-kicker {
-  margin: clamp(38px, 6vh, 68px) 0 18px;
-  color: #389ec8;
-  font: 700 clamp(14px, 1.4vw, 21px) "Space Grotesk";
-  letter-spacing: 0.04em;
-}
-
 .swith-hero h1 {
-  margin: 0;
-  font: 700 clamp(66px, 7vw, 118px) / 0.82 "Space Grotesk";
+  margin: clamp(48px, 7vh, 80px) 0 0;
+  font: 700 clamp(84px, 9vw, 150px) / 0.88 "Space Grotesk";
   letter-spacing: -0.075em;
+  white-space: nowrap;
 }
 
 .swith-hero-description {

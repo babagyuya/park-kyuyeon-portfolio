@@ -1250,14 +1250,13 @@ function SwithDetail({ project, index, next }: { project: Work; index: number; n
       <section className="swith-hero">
         <div className="swith-hero-copy">
           <span className="case-eyebrow">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
-          <p className="swith-kicker">STUDY WITH ME, STUDY WITH SWITH.</p>
-          <h1>STUDY<br />WITH<br /><em>SWITH.</em></h1>
+          <h1>SWI<em>TH</em></h1>
           <p className="swith-hero-description">{swithCase.basicInfo.message}</p>
           <div className="swith-meta">
             <span>{swithCase.basicInfo.period}</span><span>{swithCase.basicInfo.team}</span><span>{swithCase.basicInfo.role}</span>
           </div>
         </div>
-        <SwithMedia image={images.dashboard} size="large" onOpen={setZoomImage} />
+        <SwithMedia image={images.landing} size="large" onOpen={setZoomImage} />
       </section>
 
       <section className="swith-award" aria-label="SWITH project award">
