@@ -7,7 +7,7 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    period: "2026.07 — 2026.12",
+    period: "2026.07 — PRESENT",
     title: "Samsung Open Tech Companions",
     organization: "삼성전자 오픈 테크 컴패니언즈",
     details: ["Tech Content", "Branding", "Content Creation"],
@@ -19,13 +19,13 @@ export const experiences: Experience[] = [
     details: ["Content", "Brand Activity"],
   },
   {
-    period: "2026.05 — 2026.12",
+    period: "2026.05 — PRESENT",
     title: "Kisyning Beauty Supporters",
     organization: "키시닝뷰티 서포터즈",
     details: ["뷰티 콘텐츠 기획 및 제작", "Brand Collaboration"],
   },
   {
-    period: "2026.01 — 2026.12",
+    period: "2026.01 — PRESENT",
     title: "SSAFY",
     organization: "삼성 청년 SW·AI 아카데미",
     details: ["SW·AI 교육", "팀 프로젝트"],

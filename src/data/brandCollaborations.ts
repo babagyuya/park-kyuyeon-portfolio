@@ -32,7 +32,7 @@ export const brandCollaborations: BrandCollaboration[] = [
     id: "kisyning-beauty-supporters",
     brand: "Kisyning Beauty",
     koreanName: "키시닝뷰티 서포터즈",
-    period: "2026.05 — 2026.12",
+    period: "2026.05 — PRESENT",
     category: "Beauty / Content",
     role: "뷰티 콘텐츠 기획 및 제작",
     description: "제품의 색감과 사용 장면을 중심으로 뷰티 콘텐츠의 콘셉트부터 촬영과 편집까지 진행했습니다.",

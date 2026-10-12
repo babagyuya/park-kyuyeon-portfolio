@@ -1726,6 +1726,86 @@ p {
 }
 
 /* Instagram Magazine — content and performance case study */
+.work-section .work-intro {
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+.career-paths {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: clamp(64px, 7vw, 108px);
+  border-block: 1px solid #111;
+}
+
+.career-paths article {
+  min-width: 0;
+  padding: clamp(22px, 2.2vw, 34px);
+  border-right: 1px solid #111;
+}
+
+.career-paths article:last-child {
+  border-right: 0;
+}
+
+.career-paths article > span {
+  font: 700 9px "Space Grotesk";
+  letter-spacing: .12em;
+}
+
+.career-paths h3 {
+  margin: 34px 0 14px;
+  font: 700 clamp(27px, 3vw, 45px) / .95 "Space Grotesk";
+  letter-spacing: -.055em;
+}
+
+.career-paths p {
+  min-height: 3.4em;
+  margin: 0;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.career-paths article > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 26px;
+}
+
+.career-paths a,
+.work-role-tags span {
+  border: 1px solid #1115;
+  border-radius: 99px;
+  font: 700 9px "Space Grotesk";
+  letter-spacing: .06em;
+}
+
+.career-paths a {
+  padding: 7px 10px;
+  transition: color .2s, background .2s, border-color .2s;
+}
+
+.career-paths a:hover,
+.career-paths a:focus-visible {
+  border-color: #111;
+  color: #fff;
+  background: #111;
+}
+
+.work-role-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 18px;
+}
+
+.work-role-tags span {
+  padding: 5px 8px;
+  color: #555;
+  background: #fff5;
+}
+
 .work-inline-results {
   display: flex;
   flex-wrap: wrap;
@@ -2151,6 +2231,10 @@ p {
 }
 
 @media (max-width: 900px) {
+  .career-paths p {
+    min-height: 0;
+  }
+
   .instagram-about,
   .instagram-direction,
   .instagram-process,
@@ -2171,6 +2255,26 @@ p {
     grid-column: 1 / -1;
     width: calc(50% - 12px);
     margin-left: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .career-paths {
+    display: flex;
+    margin-right: -20px;
+    padding-right: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .career-paths article {
+    flex: 0 0 min(82vw, 330px);
+    padding: 22px 20px;
+    scroll-snap-align: start;
+  }
+
+  .career-paths h3 {
+    margin-top: 28px;
   }
 }
 

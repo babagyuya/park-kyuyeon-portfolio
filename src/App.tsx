@@ -37,6 +37,34 @@ const navigation = [
   ["CONTACT", "contact"],
 ] as const;
 
+const careerPaths = [
+  {
+    title: "FRONTEND",
+    description: "사용자 흐름을 설계하고 실제 서비스 화면과 인터랙션으로 구현합니다.",
+    projects: [
+      ["SWITH", "swith"],
+      ["CALLMEBABY", "callmebaby"],
+      ["FITME", "fitme"],
+    ],
+  },
+  {
+    title: "AI · AX",
+    description: "AI와 데이터를 제품 과정에 연결해 사용자의 판단과 반복 업무를 개선합니다.",
+    projects: [
+      ["FITME", "fitme"],
+      ["SWITH", "swith"],
+    ],
+  },
+  {
+    title: "MARKETING",
+    description: "콘텐츠를 기획하고 반응을 분석해 메시지와 채널의 성장을 만듭니다.",
+    projects: [
+      ["INSTAGRAM MAGAZINE", "instagram-magazine"],
+      ["SOTC", "samsung-open-tech-companions"],
+    ],
+  },
+] as const;
+
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -170,31 +198,31 @@ function Hero() {
       timeline.current = reel;
 
       reel
-        .fromTo(".intro-word", { yPercent: 110 }, { yPercent: 0, duration: 0.65 })
+        .fromTo(".intro-word", { yPercent: 110 }, { yPercent: 0, duration: 0.42 })
         .from(
           ".intro-meta span",
-          { y: 18, opacity: 0, stagger: 0.07, duration: 0.3 },
+          { y: 18, opacity: 0, stagger: 0.04, duration: 0.22 },
           "-=.25",
         )
         .to(
           ".intro-screen",
           {
             clipPath: "inset(0 0 100% 0)",
-            duration: 0.7,
+            duration: 0.38,
             ease: "power4.inOut",
           },
-          "+=.25",
+          "+=.08",
         )
         .set(".intro-screen", { display: "none" });
 
-      const timing = [1.25, 3.15, 5.1, 7.1, 9.1, 11.15, 13.15, 15.05];
+      const timing = [0.9, 1.7, 2.5, 3.3, 4.1, 4.9, 5.7, 6.5];
       beats.forEach((beat, index) => {
-        reel.to(beat, { autoAlpha: 1, yPercent: 0, duration: 0.52 }, timing[index]);
+        reel.to(beat, { autoAlpha: 1, yPercent: 0, duration: 0.32 }, timing[index]);
         if (index < beats.length - 1) {
           reel.to(
             beat,
-            { autoAlpha: 0, yPercent: -10, duration: 0.38, ease: "power2.in" },
-            timing[index] + 1.45,
+            { autoAlpha: 0, yPercent: -10, duration: 0.22, ease: "power2.in" },
+            timing[index] + 0.56,
           );
         }
       });
@@ -202,12 +230,12 @@ function Hero() {
       reel
         .from(
           ".kinetic-word",
-          { yPercent: 120, rotate: 4, stagger: 0.08, duration: 0.45 },
+          { yPercent: 120, rotate: 4, stagger: 0.04, duration: 0.3 },
           timing[1],
         )
         .from(
           ".role-line",
-          { xPercent: (index) => (index % 2 ? 35 : -35), stagger: 0.06, duration: 0.45 },
+          { xPercent: (index) => (index % 2 ? 35 : -35), stagger: 0.04, duration: 0.3 },
           timing[2],
         )
         .from(
@@ -215,14 +243,14 @@ function Hero() {
           {
             scale: 0,
             rotate: () => gsap.utils.random(-12, 12),
-            stagger: 0.04,
-            duration: 0.3,
+            stagger: 0.025,
+            duration: 0.22,
           },
           timing[3],
         )
         .from(
           ".number-block",
-          { scale: 0.75, opacity: 0, stagger: 0.08, duration: 0.5 },
+          { scale: 0.75, opacity: 0, stagger: 0.04, duration: 0.3 },
           timing[4],
         )
         .from(
@@ -230,19 +258,19 @@ function Hero() {
           {
             xPercent: (index) => (index % 2 ? 120 : -120),
             rotate: (index) => (index % 2 ? 5 : -5),
-            stagger: 0.06,
-            duration: 0.55,
+            stagger: 0.04,
+            duration: 0.32,
           },
           timing[5],
         )
         .from(
           ".statement-line",
-          { yPercent: 120, stagger: 0.12, duration: 0.48 },
+          { yPercent: 120, stagger: 0.05, duration: 0.3 },
           timing[6],
         )
         .from(
           ".final-line",
-          { yPercent: 110, stagger: 0.09, duration: 0.65 },
+          { yPercent: 110, stagger: 0.05, duration: 0.4 },
           timing[7],
         );
     }, root);
@@ -282,7 +310,7 @@ function Hero() {
         {["FRONTEND", "AI / DATA", "PRODUCT", "MARKETING", "CONTENT"].map((role) => (
           <div className="role-line" key={role}>{role}</div>
         ))}
-        <div className="not-one">NOT JUST ONE.</div>
+        <div className="not-one">ONE PRACTICE.</div>
       </div>
 
       <div className="showreel-beat beat-flash">
@@ -346,7 +374,7 @@ function Hero() {
         onClick={() => timeline.current?.progress(1)}
         className="skip-reel"
       >
-        SKIP 15S
+        SKIP INTRO
       </button>
       <div className="reel-index">PKY / IDENTITY REEL</div>
     </section>
@@ -420,7 +448,7 @@ function WhatIDoSection() {
       <SectionKicker index="04" label="WHAT I DO" dark />
       <div className="what-heading">
         <h2 id="what-title">FOUR MODES.<br /><span>ONE PRACTICE.</span></h2>
-        <p>문제에 따라 역할은 달라지지만, 호기심을 구체적인 결과로 연결하는 방식은 같습니다.</p>
+        <p>역할은 달라도 문제를 발견하고 구현·검증·성장으로 연결하는 방식은 같습니다.</p>
       </div>
       <div className="mode-list">
         {modes.map((mode) => (
@@ -445,7 +473,21 @@ function WorksSection() {
       <SectionKicker index="05" label="SELECTED WORKS" />
       <div className="work-intro">
         <h2 id="work-title">WORK THAT<br />CROSSES <span>LINES.</span></h2>
-        <p>제품, AI, 콘텐츠를 분리된 목록이 아니라 문제를 해결하는 사고가 이동한 기록으로 보여줍니다.</p>
+        <p>문제를 발견하고 구현한 뒤, 데이터와 사용자 반응을 바탕으로 성장시킨 과정을 보여줍니다.</p>
+      </div>
+      <div className="career-paths" aria-label="지원 직무별 프로젝트 탐색">
+        {careerPaths.map((path, pathIndex) => (
+          <article key={path.title}>
+            <span>0{pathIndex + 1} / EXPLORE</span>
+            <h3>{path.title}</h3>
+            <p>{path.description}</p>
+            <div>
+              {path.projects.map(([label, slug]) => (
+                <Link to={`/work/${slug}`} key={slug}>{label} ↗</Link>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
       <div className="work-list">
         {works.map((project, index) => (
@@ -460,6 +502,9 @@ function WorksSection() {
               <span>{project.category} · {project.period}</span>
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
+              <div className="work-role-tags" aria-label={`${project.title} 담당 역할`}>
+                {project.role.split(" · ").slice(0, 4).map((role) => <span key={role}>{role}</span>)}
+              </div>
               {project.slug === "instagram-magazine" && (
                 <div className="work-inline-results" aria-label="Instagram Magazine 주요 성과">
                   {project.results.map((result) => (
@@ -470,7 +515,7 @@ function WorksSection() {
             </div>
             <div className={`work-visual ${project.heroImage.src ? "work-visual-image" : ""}`} style={{ "--work-accent": project.accent } as CSSProperties}>
               {project.heroImage.src ? (
-                <img src={assetUrl(project.heroImage.src)} alt={project.heroImage.alt} />
+                <img src={assetUrl(project.heroImage.src)} alt={project.heroImage.alt} loading="lazy" decoding="async" />
               ) : (
                 <div className="visual-orbit" />
               )}
@@ -504,7 +549,7 @@ function BrandCollaborationsSection() {
               <span>{brand.category}</span>
             </div>
             <div className="brand-media">
-              <img src={brand.image} alt={brand.imageAlt} />
+              <img src={brand.image} alt={brand.imageAlt} loading="lazy" decoding="async" />
             </div>
             <div className="brand-card-title">
               <h3>{brand.brand}</h3>
@@ -625,14 +670,10 @@ function ContactSection() {
           <p>제 이야기가 궁금증을 만들었다면,<br />이메일이나 인스타그램으로 이야기해 주세요.</p>
         </div>
         <div className="contact-links">
-          {contactLinks.map((link) => link.href ? (
+          {contactLinks.map((link) => (
             <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined} key={link.label}>
               <span>{link.label}<small>{link.value}</small></span><b>↗</b>
             </a>
-          ) : (
-            <span className="placeholder-link" title="실제 링크 추가 예정" key={link.label}>
-              <span>{link.label}<small>{link.value}</small></span><b>—</b>
-            </span>
           ))}
         </div>
       </div>

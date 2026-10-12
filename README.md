@@ -46,7 +46,7 @@ src/
 └─ styles.css          # Pretendard, Case Study, 반응형 보완 스타일
 ```
 
-GitHub와 LinkedIn은 실제 주소가 추가될 때까지 placeholder로 표시됩니다. 공개 연락처는 `src/data/contact.ts`에서 관리합니다.
+공개 연락처는 `src/data/contact.ts`에서 관리하며, 실제로 공개할 채널만 화면에 표시합니다.
 
 ## Project Images
 

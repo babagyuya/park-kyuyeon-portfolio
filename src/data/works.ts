@@ -294,7 +294,7 @@ export const works: Work[] = [
     title: "SAMSUNG OPEN TECH COMPANIONS",
     slug: "samsung-open-tech-companions",
     category: "ACTIVITY",
-    period: "2026.07 — 2026.12",
+    period: "2026.07 — PRESENT",
     role: "Tech Content · Content Planning · Content Creation · Brand Communication",
     team: "BRAND ACTIVITY",
     highlight: "TECH STORY",

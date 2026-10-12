@@ -8,10 +8,8 @@ export const contact = {
 export const contactLinks: Array<{
   label: string;
   value: string;
-  href: string | null;
+  href: string;
 }> = [
   { label: "EMAIL", value: contact.email, href: `mailto:${contact.email}` },
   { label: "INSTAGRAM", value: contact.instagram, href: "https://instagram.com/gyuyuya" },
-  { label: "GITHUB", value: "UPDATE SOON", href: null },
-  { label: "LINKEDIN", value: "UPDATE SOON", href: null },
 ];

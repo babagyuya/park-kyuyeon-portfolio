@@ -15,7 +15,7 @@ export const sotcCase = {
   info: {
     title: "SOTC",
     subtitle: "SAMSUNG OPEN TECH COMPANIONS",
-    period: "2026.07 — 2026.12",
+    period: "2026.07 — PRESENT",
     role: "TECH CONTENT · BRAND COMMUNICATION",
     statement: "기술을 이해하고, 사람들이 보고 싶은 이야기로 바꾸다.",
   },
