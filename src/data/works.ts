@@ -4,6 +4,7 @@ import fashionFitContent from "../assets/instagram-magazine/fashion-fit-content.
 import beautyContent from "../assets/instagram-magazine/beauty-content.png";
 import instagramFeedOverview from "../assets/instagram-magazine/instagram-feed-overview.png";
 import instagramReelsPerformance from "../assets/instagram-magazine/instagram-reels-performance.png";
+import swithLanding from "../assets/projects/swith/swith-landing.png";
 import { callmebabyCase } from "./callmebaby";
 
 export type ProjectImage = {
@@ -121,7 +122,11 @@ export const works: Work[] = [
     results: [{ value: "1ST", label: "SSAFY 특화 프로젝트" }],
     skills: ["React", "TypeScript", "Product Thinking", "Presentation"],
     accent: "#4DD0E1",
-    heroImage: image("SWITH 대표 서비스 화면", "HERO VISUAL"),
+    heroImage: {
+      src: swithLanding,
+      alt: "우리의 풀이가 내일의 실력이 될 때까지라는 문구가 있는 SWITH 대표 서비스 화면",
+      caption: "HERO VISUAL",
+    },
     gallery: [
       { type: "full", title: "SERVICE OVERVIEW", images: [image("SWITH 서비스 전체 화면")] },
       { type: "two-column", title: "CORE EXPERIENCE", images: [image("SWITH 핵심 화면 1"), image("SWITH 핵심 화면 2")] },
