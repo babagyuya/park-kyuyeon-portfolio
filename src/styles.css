@@ -236,9 +236,12 @@ p {
 }
 
 .brand-card-1 .brand-media img,
-.brand-card-2 .brand-media img,
 .brand-card-3 .brand-media img {
   object-position: center;
+}
+
+.brand-card-2 .brand-media img {
+  object-position: center 20%;
 }
 
 .brand-card-4 .brand-media img {
