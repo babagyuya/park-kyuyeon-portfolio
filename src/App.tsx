@@ -1507,18 +1507,8 @@ function FitmeDetail({ project, index, next }: { project: Work; index: number; n
         <div className="fitme-tech-grid">{fitmeCase.techStack.map((group) => <article key={group.category}><h3>{group.category}</h3><p>{group.items}</p></article>)}</div>
       </section>
 
-      <section className="fitme-section fitme-challenges" aria-labelledby="fitme-challenges-title">
-        <div className="fitme-heading"><span>11 / CHALLENGES & SOLUTIONS</span><h2 id="fitme-challenges-title">BUILDING THE <em>CONNECTIONS.</em></h2></div>
-        <div className="fitme-challenge-list">{fitmeCase.challenges.map((challenge) => <article key={challenge.id}><span>CHALLENGE {challenge.id}</span><h3>{challenge.title}</h3><p>{challenge.solution}</p></article>)}</div>
-      </section>
-
-      <section className="fitme-ownership" aria-labelledby="fitme-ownership-title">
-        <div><span>12 / TEAM CONTRIBUTION</span><h2 id="fitme-ownership-title">TWO PEOPLE.<br /><em>CLEAR OWNERSHIP.</em></h2></div>
-        <div><article><span>MY ROLE</span><p>{fitmeCase.ownership.mine}</p></article><article><span>TEAMMATE</span><p>{fitmeCase.ownership.teammate}</p></article></div>
-      </section>
-
       <section className="fitme-section fitme-retro" aria-labelledby="fitme-retro-title">
-        <div className="fitme-heading"><span>13 / WHAT I LEARNED</span><h2 id="fitme-retro-title">FROM FLOW <em>TO SERVICE.</em></h2></div>
+        <div className="fitme-heading"><span>11 / WHAT I LEARNED</span><h2 id="fitme-retro-title">FROM FLOW <em>TO SERVICE.</em></h2></div>
         <div className="fitme-retro-grid">{fitmeCase.retrospective.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
         <div className="fitme-final"><strong>FINAL PRESENTER</strong><p>기능을 나열하기보다 온라인 쇼핑의 Fit 문제에서 Diagnosis → Style → Product로 이어지는 서비스 Story를 정리해 최종 발표를 담당했습니다.</p></div>
       </section>

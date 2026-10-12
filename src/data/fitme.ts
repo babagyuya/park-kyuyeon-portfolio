@@ -76,17 +76,7 @@ export const fitmeCase = {
     { category: "BACKEND", items: "Python 3.11 · Django 5 · Django REST Framework · SQLite" },
     { category: "AUTH", items: "Simple JWT · Kakao OAuth · Google OAuth · Naver OAuth" },
     { category: "AI", items: "GMS / Gemini API · 이미지 분석 · 설문 기반 보정" },
-    { category: "TOOLS", items: "GitLab · 환경 변수 분리 · 기능 단위 Commit" },
   ],
-  challenges: [
-    { id: "01", title: ".env 누락으로 인한 실행 오류", solution: "API Key와 서버 주소를 frontend와 backend 환경 변수로 분리하고 민감 정보는 Git에서 제외했습니다." },
-    { id: "02", title: "추천 상품이 보이지 않는 문제", solution: "API 응답을 확인한 뒤 Product DB가 비어 있음을 찾아 Musinsa 상품 CSV를 import_products 명령어로 DB에 반영했습니다." },
-    { id: "03", title: "Frontend / Backend 주소 불일치", solution: "VITE_API_BASE_URL, Django CORS와 ALLOWED_HOSTS, ngrok 주소를 실행 환경에 맞게 정리했습니다." },
-  ],
-  ownership: {
-    mine: "박규연 — Frontend · Backend · AI Diagnosis Flow · Service UX · Final Presentation",
-    teammate: "김채현 — Backend · Data · Crawling · Product DB (Musinsa 상품 수집, CSV 정리, DB 설계와 Import, 추천 데이터 구성, Backend API 일부)",
-  },
   retrospective: [
     { title: "WHAT I BUILT", description: "회원가입부터 진단, 추천, 커뮤니티까지 서비스 전체 Flow를 구현했습니다." },
     { title: "WHAT I LEARNED", description: "Frontend와 Backend를 분리한 SPA 구조에서 인증, 이미지 업로드, 추천 API와 Community 기능을 연결하며 서비스 전체 구조를 경험했습니다." },
