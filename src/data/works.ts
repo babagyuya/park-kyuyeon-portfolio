@@ -271,7 +271,7 @@ export const works: Work[] = [
       alt: "높은 조회수를 기록한 인스타그램 릴스 콘텐츠 목록",
     },
     instagramHandle: "@wearproof",
-    instagramUrl: "https://instagram.com/wearproof",
+    instagramUrl: "https://www.instagram.com/wearproof.kr",
     gallery: [],
   },
   {
