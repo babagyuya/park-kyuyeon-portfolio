@@ -586,7 +586,7 @@ function BeyondSection() {
         <h2 id="beyond-title">BEYOND<br />THE<br /><em>RÉSUMÉ.</em></h2>
         <div className="beyond-window">
           <div className="window-top"><span>PERSONAL_ARCHIVE.JPG</span><span>×</span></div>
-          <div className="window-art"><span>STILL<br />CURIOUS.</span></div>
+          <div className="window-art"><span className="still-curious">STILL<br />CURIOUS.</span></div>
         </div>
         <div className="interest-list">
           <p>일은 이야기의 일부일 뿐 전부는 아닙니다. 관찰하고 기록하고 새로운 질문을 발견하는 취향도 함께 보여주고 싶습니다.</p>
@@ -603,7 +603,7 @@ function ContactSection() {
   return (
     <section id="contact" className="contact-section bg-paper" aria-labelledby="contact-title">
       <p className="contact-kicker">HAVE A QUESTION, AN IDEA, OR AN UNUSUAL BRIEF?</p>
-      <h2 id="contact-title">LET'S<br /><span>CONNECT.</span></h2>
+      <h2 id="contact-title"><span className="contact-lets">LET'S</span><br /><span>CONNECT.</span></h2>
       <div className="contact-bottom">
         <div className="contact-person">
           <strong>{contact.nameKo}</strong>
@@ -800,7 +800,7 @@ function ProjectDetailPage() {
   ];
 
   return (
-    <main className="work-detail case-study" style={accent}>
+    <main className={`work-detail case-study project-${project.slug}`} style={accent}>
       <header className="detail-nav">
         <Link to="/" aria-label="Park Kyuyeon 포트폴리오 홈">{profile.mark}</Link>
         <Link to="/">CLOSE ×</Link>

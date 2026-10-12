@@ -11,6 +11,10 @@ body,
   max-width: 100%;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   word-break: keep-all;
   overflow-wrap: normal;
@@ -32,6 +36,53 @@ h3 {
 
 p {
   text-wrap: pretty;
+}
+
+/* Keep oversized editorial type readable without losing its visual weight. */
+.final-heading {
+  line-height: 0.7;
+  letter-spacing: -0.075em;
+}
+
+.work-title-wrap h3 {
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.beyond-grid h2 {
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+}
+
+.window-art {
+  height: auto;
+  min-height: clamp(330px, 30vw, 440px);
+  overflow: hidden;
+}
+
+.window-art .still-curious {
+  display: block;
+  max-width: 100%;
+  font-size: clamp(44px, 5.3vw, 82px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+.contact-section h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 0.84;
+}
+
+.contact-section h2 br {
+  display: none;
+}
+
+.contact-section h2 .contact-lets {
+  display: inline-block;
+  color: inherit;
+  letter-spacing: -0.015em;
 }
 
 .nav-button {
@@ -470,6 +521,9 @@ p {
 }
 
 .case-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 0;
 }
 
@@ -484,11 +538,26 @@ p {
 }
 
 .case-hero h1 {
+  max-width: 100%;
   margin: 7vh 0 28px;
-  font: 700 clamp(64px, 9.5vw, 158px) / 0.78 "Space Grotesk";
-  letter-spacing: -0.085em;
+  font: 700 clamp(64px, 9.5vw, 158px) / 0.84 "Space Grotesk";
+  letter-spacing: -0.06em;
   overflow-wrap: normal;
   word-break: normal;
+}
+
+.project-callmebaby .case-hero h1 {
+  font-size: clamp(60px, 5.8vw, 108px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.project-samsung-open-tech-companions .case-hero h1 {
+  font-size: clamp(48px, 4.3vw, 84px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  word-break: keep-all;
 }
 
 .case-hero-copy > p {
@@ -528,7 +597,7 @@ p {
   margin: 6px 0 0;
   font-family: "Pretendard Variable", Pretendard, sans-serif;
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.65;
   word-break: keep-all;
 }
 
@@ -802,7 +871,7 @@ p {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .case-hero {
     grid-template-columns: 1fr;
     padding-top: 16vh;
@@ -815,9 +884,23 @@ p {
   .case-hero .project-media {
     max-width: 900px;
   }
+
+  .project-callmebaby .case-hero h1,
+  .project-samsung-open-tech-companions .case-hero h1 {
+    font-size: clamp(58px, 9vw, 100px);
+  }
 }
 
 @media (max-width: 900px) {
+  .window-art {
+    min-height: clamp(320px, 56vw, 440px);
+  }
+
+  .window-art .still-curious {
+    font-size: clamp(52px, 13vw, 96px);
+    line-height: 0.94;
+  }
+
   .about-copy p,
   .what-heading p,
   .work-intro p,
@@ -1007,6 +1090,15 @@ p {
 
   .case-hero h1 {
     font-size: clamp(52px, 16vw, 92px);
+  }
+
+  .project-callmebaby .case-hero h1 {
+    font-size: clamp(48px, 13.5vw, 82px);
+  }
+
+  .project-samsung-open-tech-companions .case-hero h1 {
+    font-size: clamp(42px, 12vw, 72px);
+    line-height: 0.98;
   }
 
   .case-meta {
