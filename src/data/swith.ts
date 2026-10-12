@@ -37,8 +37,8 @@ export const swithCase = {
     message: "알고리즘 스터디의 문제 선정부터 풀이, 코드 이해, 스터디, 복습까지 하나의 흐름으로 연결한 학습 플랫폼",
   },
   award: {
-    value: "1ST PLACE",
-    title: "SSAFY SPECIAL PROJECT",
+    value: "1위",
+    title: "SSAFY 특화 프로젝트 발표회",
     detail: "6인 협업 프로젝트 · 최종 발표 박규연",
   },
   overview: [
@@ -100,7 +100,7 @@ export const swithCase = {
     { category: "INFRASTRUCTURE", items: "Docker 이중 격리 · CPU / Memory / Time / Network 제한" },
   ],
   results: [
-    { value: "1ST", label: "SSAFY SPECIAL PROJECT" },
+    { value: "1위", label: "SSAFY 특화 프로젝트 발표회" },
     { value: "20 → 2%", label: "CODE VISUALIZATION ERROR RATE" },
     { value: "57.14 → 91.84%", label: "ALGORITHM TERM RECOVERY" },
     { value: "6", label: "TEAM MEMBERS" },
