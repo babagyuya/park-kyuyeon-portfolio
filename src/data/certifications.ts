@@ -14,4 +14,9 @@ export const certifications = [
     grade: "SQL 개발자",
     description: "SQL Developer",
   },
+  {
+    name: "Google Analytics (GA)",
+    grade: "Google Analytics Certification",
+    description: "Google Analytics 측정 및 분석 역량",
+  },
 ] as const;
