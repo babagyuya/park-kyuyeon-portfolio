@@ -906,9 +906,9 @@ p {
 
 .certification-list article {
   display: grid;
-  grid-template-columns: 48px minmax(240px, 1.3fr) minmax(180px, 0.8fr) minmax(260px, 1fr);
+  grid-template-columns: 48px minmax(0, 1.6fr) minmax(240px, 0.75fr) minmax(260px, 0.85fr);
   align-items: center;
-  gap: 3vw;
+  gap: clamp(24px, 2.5vw, 48px);
   min-width: 0;
   padding: 28px 0;
   border-bottom: 1px solid #111;
@@ -919,15 +919,20 @@ p {
 }
 
 .certification-list h3 {
+  min-width: 0;
   margin: 0;
   font: 700 clamp(30px, 4vw, 60px) / 1 "Space Grotesk";
   letter-spacing: -0.055em;
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
 }
 
 .certification-list strong {
+  min-width: 0;
   font-family: "Pretendard Variable", Pretendard, sans-serif;
   font-size: clamp(19px, 1.8vw, 26px);
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 .certification-list p {
