@@ -546,8 +546,15 @@ p {
 }
 
 .beyond-grid h2 {
+  min-width: 0;
+  font-size: clamp(64px, 9.6vw, 145px);
   line-height: 0.82;
   letter-spacing: -0.06em;
+}
+
+.beyond-window {
+  min-width: 0;
+  margin-left: clamp(18px, 1.6vw, 30px);
 }
 
 .window-art {
@@ -1433,6 +1440,10 @@ p {
 }
 
 @media (max-width: 900px) {
+  .beyond-window {
+    margin-left: 0;
+  }
+
   .window-art {
     min-height: clamp(320px, 56vw, 440px);
   }
